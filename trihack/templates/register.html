@@ -1,36 +1,11 @@
-<!DOCTYPE HTML>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <link href="{{MEDIA_URL}}css/style.css" rel="stylesheet" />
-        <title> Welcome to Trihack -! </title>
-    </head>
+{% extends "base.html" %}
+{% block content %}
+<section id='main'>
+<div id=title style="text-align:center">
+    <img src="{{MEDIA_URL}}image/register.png" alt="register title"/>
+</div>
 
-    <body>
-        <!-- header -->
-        <div id=content style="min-height: 720px">
-        <div id=left-column>
-            <header id="main-header">
-                <img src="{{MEDIA_URL}}image/logo.png" alt="trihack main logo" id="logo"/>
-                <div id="main_nav">
-                    <nav id="main_menu"> 
-                        <ul id="menu_page">
-                            <li id=menu_login> <img src="{{MEDIA_URL}}image/login.png" alt="login button"/> </li> 
-                            <li id=menu_debate>   <img src="{{MEDIA_URL}}image/register_2.png" alt="reigster button"/> </li>
-                            <li id=menu_register> <img src="{{MEDIA_URL}}image/debate.png" alt="debate button"/> </li>
-                        </ul>
-                    </nav> 
-                </div>
-            </header>
-        </div>
-
-
-        <!-- body -->
-        <section id='main'>
-        <div id=title style="text-align:center">
-            <img src="{{MEDIA_URL}}image/register.png" alt="register title"/>
-        </div>
-        <div id=contents> 
+<div id=contents>
 <div class="ss-form"><form action="https://docs.google.com/spreadsheet/formResponse?formkey=dFZkNU1hMGo4bVpleFBxVENYVXZGYUE6MQ&amp;ifq" method="POST" id="ss-form">
 
 
@@ -101,13 +76,4 @@ return;
 
 
 
-        </div>
-
-        <!-- footer -->
-        <footer>
-            footer
-        </footer>
-
-
-    </body>
-</html>
+{% endblock %}
