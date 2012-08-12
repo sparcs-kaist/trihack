@@ -5,6 +5,11 @@ from django.conf.urls import patterns, include, url
 # admin.autodiscover()
 
 urlpatterns = patterns('',
+    (r'^$', 'django.views.generic.simple.direct_to_template', {'template': 'index.html'}),
+    (r'^register/$', 'django.views.generic.simple.direct_to_template', {'template': 'register.html'}),
+
+    # Media Root
+    (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': './media'}),
     # Examples:
     # url(r'^$', 'trihack.views.home', name='home'),
     # url(r'^trihack/', include('trihack.foo.urls')),
