@@ -12,6 +12,27 @@ body {
     position:relative;
     z-index: 1;
 }
+#bar1 {
+    position:absolute;
+    left:1px; 
+    top:578px;
+}
+#bar2 {
+    position:absolute;
+    left:219px; 
+    top:578px;
+}
+#text_1 {
+    position:absolute;
+    left:18px; 
+    top:567px;
+}
+#text_2 {
+    position:absolute;
+    left:228px; 
+    top:567px;
+}
+
 #left-column {
     position:absolute;
     margin:35px auto;
