@@ -12,6 +12,11 @@ body {
     position:relative;
     z-index: 1;
 }
+#bar{
+    position:absolute;
+    left:-379px; 
+    top:560px;
+}
 #bar1 {
     position:absolute;
     left:1px; 
