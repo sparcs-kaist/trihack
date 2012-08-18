@@ -7,7 +7,8 @@ from django.conf.urls import patterns, include, url
 urlpatterns = patterns('',
     (r'^$', 'django.views.generic.simple.direct_to_template', {'template': 'index.html'}),
     (r'^register/$', 'django.views.generic.simple.direct_to_template', {'template': 'register.html'}),
-    (r'^login/',include('wtrihack.urls')),
+    (r'^login/$','wtrihack.views.login_page'),
+    (r'^logout/$','wtrihack.views.logout'),
     
     # Media Root
     (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': './media'}),

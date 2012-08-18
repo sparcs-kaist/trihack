@@ -1,3 +1,4 @@
 syntax: glob
 hgusers
 *.pyc
+*.db

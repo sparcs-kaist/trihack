@@ -1,30 +1,30 @@
 {% extends "base.html" %}
 
 {% block content %}
-{% block style %}<link href="/media/css/login.css" rel="stylesheet" />{% endblock %}
 <section id ="login">
 
-<div id="loginbox">
-    <form id="loginform" method="post" action="/login/login/">
-        <div id="idPw">
-            <table id="logintable">
-				<tr>
-					<td><label for="trihackId">ID</label></td>
-                    <td><input type="text" class="signInInput" id="trihackId" name="username" tabindex="1"></td>
-					<td rowspan="2">
-						<div id="submitButton">
-							<input type="submit" class="signInButton" id="signinSubmit" tabindex="3" value="Login">
-						</div>
-					</td>
-				</tr>
-            	<tr>
-                	<td><label for="trihackPw">Password</label></td>
-                	<td><input type="password" class="signInInput" id="trihackPw" name="password" tabindex="2"></td>
-            	</tr>
-			</table>
-		</div>
-		    </form>
-</div>
+	<div id="loginbox">
+		<form id="loginform" method="post" action=".">{% csrf_token %}
+			<div id="idPw">
+				<table id="logintable">
+					<tr>
+						<td><label for="trihackId">ID</label></td>	
+						<td><input type="text" class="signInInput" id="trihackId" name="username" tabindex="1"></td>
+						<td rowspan="2">
+							<div id="submitButton">
+								<input type="submit" class="signInButton" id="signinSubmit" tabindex="3" value="Login">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td><label for="trihackPw">Password</label></td>
+						<td><input type="password" class="signInInput" id="trihackPw" name="password" tabindex="2"></td>
+					</tr>
+				</table>
+			</div>
+		</form>
+		<p>{{ state }} </p>
+	</div>
 </section>
 
 {% endblock %}

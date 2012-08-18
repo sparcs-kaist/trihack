@@ -15,7 +15,11 @@
                 <div id="main_nav">
                     <nav id="main_menu"> 
                         <ul id="menu_page">
+                            {% if user.is_authenticated %}
+                            <a href = "/logout/">logout</a>
+                            {% else %}
                             <a href = "/login/"> <li id="menu_login"> <img src="/media/image/login.png" alt="login button"/> </li> </a> 
+                            {% endif %}
                             <a href = "/register/"> <li id="menu_register">   <img src="/media/image/register_2.png" alt="reigster button"/> </li> </a>
                             <a href = "/forum/"> <li id="menu_forum"> <img src="/media/image/forum.png" alt="forum button"/> </li> </a>
                         </ul>
