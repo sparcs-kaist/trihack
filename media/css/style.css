@@ -92,3 +92,11 @@ li {
     text-align:center;
 }
 */
+
+#copyright {
+    color: #AAA
+    text-shadow: 1px 1px 0 #333;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 0.9em;
+    line-height: 1.3;
+}
