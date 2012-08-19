@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.contrib import auth
 from django.contrib.auth import authenticate,login
-from django.shortcuts import render_to_response
+from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.http import *
@@ -9,7 +9,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 @csrf_exempt
 def login_page(request) :
-    state=''
+    state = ''
     username = password = ''
     if request.POST:
         username = request.POST.get('username')
@@ -25,7 +25,7 @@ def login_page(request) :
         else:
             state = "Your username and/or password were incorrect."
 
-    return render_to_response('login.html',{'username': username,'state':state})
+    return render(request, 'login.html', {'username': username,'state': state})
   
 def logout(request):
     auth.logout(request)
