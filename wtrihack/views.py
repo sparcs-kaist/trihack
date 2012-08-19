@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.http import *
 from django.views.decorators.csrf import csrf_exempt
-import os
+import re
 
 @csrf_exempt
 def login_page(request) :
@@ -47,19 +47,23 @@ def register(request):
         email = request.POST.get('entry.1.single')
         location = request.POST.get('entry.2.group')
         if name.strip() == '' :
-            nameE = "There is no name." 
+            nameE = "There is no name" 
             nameT = ""
             error = True
         if team.strip() == '' :
-            teamE = "There is no team name."
+            teamE = "There is no team name"
             teamT = ""
             error = True
         if email.strip() == '' :
-            emailE = "There is no Email address."
-            emailT ="" 
+            emailE = "There is no Email address"
+            emailT =""
+            error = True
+        elif not validateEmail(email.strip()) :
+            emailE = "Invalid Email Address"
+            emailT = "" 
             error = True
         if location == None or  location.strip() == '':
-            locationE = "There is no Location information." 
+            locationE = "There is no Location information" 
             locationT = ""
             error = True
        
@@ -79,3 +83,9 @@ def register(request):
             'team':team,
             'email':email,
             'location':location})
+
+def validateEmail(email):
+    if len(email) > 7:
+        if re.match("^.+\\@[a-zA-Z0-9]+[a-zA-Z0-9\\-\\.]*\\.([a-zA-Z]{2,3}|[0-9]{1,3})$", email) != None:
+            return True
+        return False
