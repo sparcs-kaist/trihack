@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link href="/media/css/style.css" rel="stylesheet" />
+        <title> Welcome to Trihack -! </title>
+        {% block style %} {% endblock %}
+    </head>
+
+    <body>
+        <!-- header -->
+        <div id="content" style="min-height: 720px">
+        <div id="left-column">
+            <header id="main-header">
+                <a href = "/"> <img src="/media/image/logo.png" alt="trihack main logo" id="logo"/> </a>
+                <div id="main_nav">
+                    <nav id="main_menu"> 
+                        <ul id="menu_page">
+                            {% if user.is_authenticated %}
+                            <li><a href = "/logout/">logout</a></li>
+                            {% else %}
+                            <li id="menu_login"><a href = "/login/"><img src="/media/image/login.png" alt="login button"/></a></li>
+                            {% endif %}
+                            <li id="menu_register"><a href = "/register/"><img src="/media/image/register_2.png" alt="reigster button"/></a></li>
+                            <li id="menu_forum"><a href = "/forum/"><img src="/media/image/forum.png" alt="forum button"/></a></li>
+                        </ul>
+                    </nav> 
+                </div>
+            </header>
+        </div>
+
+
+        {% block content %} {% endblock %}
+
+        </div>
+
+        <!-- footer -->
+        <footer>
+        <hr />
+        <div id="logos">
+            <img src="/media/image/aseslogo.png" alt="ASES logo" height="35px"/>
+            <img src="/media/image/startwavelogo.png" alt="Startwave logo" height="35px"/>
+            <img src="/media/image/sparcslogo.png" alt="SPARCS logo" height="35px"/>
+        </div>
+        <p id="copyright">
+            Copyright © SPARCS 2012 All Right Reserved.
+        </p>
+        </footer>
+
+
+    </body>
+</html>
