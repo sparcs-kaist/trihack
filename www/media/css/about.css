@@ -1,0 +1,29 @@
+.content_title {
+    display: inline;
+    padding-left: 32px;
+    padding-right: 17px;
+    background-color: #404040;
+    color: #FFFFFF;
+}
+
+.content_content {
+    padding-left: 32px;
+}
+
+.content_help {
+    display: inline;
+    color: #9A9A9A;
+}
+
+.content_body {
+    display: inline;
+}
+
+#content_nayong {
+    display: inline;
+}
+
+#content_jangso {
+    display: inline;
+}
+

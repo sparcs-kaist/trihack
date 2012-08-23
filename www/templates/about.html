@@ -1,10 +1,94 @@
 {% extends "base.html" %}
 
+{% load i18n %}
+
 {% block style %}
 <link rel = "stylesheet" href="{{MEDIA_URL}}css/about.css" media="screen" /> 
 {% endblock %}
 
 {% block content %}
-<div id="content">
+
+<div id="title" style="text-align:center">
+	<img src="{{MEDIA_URL}}image/main_logo.png" alt="register title"/><br/>
+	<img src="{{MEDIA_URL}}image/about_title.png" alt="about title"/><br/>
+
+	<img src="{{MEDIA_URL}}image/english.png" alt="english" />
+	<img src="{{MEDIA_URL}}image/korea.png" alt="korean" />
+	<img src="{{MEDIA_URL}}image/japanese.png" alt="japanese" />
+	<img src="{{MEDIA_URL}}image/chinese.png" alt="chinese" />
 </div>
+
+<div id="content">
+	<div class="content_title">{% trans "대학생들 중심의 대학생들을 위한 TriHack 해카톤" %}</div>
+	<div class="content_content">
+		<p> <span>{% trans "일시" %} : </span>2012. 09. 08. {% trans "토요일 오전 11시 시작" %}</p>
+		<p> <span>{% trans "장소" %} : </span>{% trans "서울대학교 39동 B103호" %}</p>
+		<p> <span>{% trans "주최" %} : </span>ASES (Stanford), STARTWAVE (SNU), SPARCS (KAIST)</p>
+		<p> <span>{% trans "후원" %} : </span>NEXON </p>
+	</div>
+
+	<div class="content_title">{% trans "일정 : 09월 08일 토요일" %}</div>
+	<div class="content_content">
+		<div id="content_nayong"> 
+			<p class="content_help">{% trans "내용" %}</p>
+			<div class="content_body">{% trans "핵카톤" %} D-Day </div>
+		</div>
+		<div id="content_jangso"> 
+			<p class="content_help">{% trans "장소" %}</p>
+			<div class="content_body">{% trans "서울대학교 대강당" %} </div>
+		</div>
+		<div id="content_bigo">
+			<p class="content_help">{% trans "비고" %}</p>
+			<div class="content_body">
+				<p>{% trans "10:00 - 11:00" %}<br/>
+				{% trans "등록 및 준비" %}</p>
+				<p>{% trans "11:00 - 12:00" %}<br/>
+				{% trans "개발 및 피칭 관련 설명" %}</p>
+				<p>{% trans "12:30" %}<br/>
+				{% trans "코딩 및 개발 시작" %}</p>
+			<p class="content_help">{% trans "(중식, 석식, 조식, 간식 제공)" %}</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="content_title">{% trans "일정 : 09월 09일 일요일" %}</div>
+	<div class="content_content">
+		<div id="content_nayong"> 
+			<p class="content_help">{% trans "내용" %}</p>
+			<div class="content_body">{% trans "핵카톤" %} D+1 </div>
+		</div>
+		<div id="content_jangso"> 
+			<p class="content_help">{% trans "장소" %}</p>
+			<div class="content_body">{% trans "서울대학교 대강당" %} </div>
+		</div>
+		<div id="content_bigo">
+			<p class="content_help">{% trans "비고" %}</p>
+			<div class="content_body">
+				<p>{% trans "12:30" %}<br/>
+				{% trans "코딩 및 개발 종료" %}</p>
+				<p>{% trans "12:30 - 15:00" %}<br/>
+				{% trans "점심 및 PT 준비" %}</p>
+				<p>{% trans "15:00" %}<br/>
+				{% trans "한중일 공동 프로토타입 쇼케이스 (온라인 라이브)" %}</p>
+				<p>{% trans "17:00" %}<br/>
+				{% trans "피드백 세션 및 수상 (온라인 라이브)" %}</p>
+				<p>{% trans "18:00" %}<br/>
+				{% trans "기념 저녁식사" %}</p>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="content_title">{% trans "우승팀에게 주어지는 기회" %}</div>
+	<div class="content_help">{% trans "한중일 각 1개 팀 선정" %}</div>
+	<div class="content_content">
+		<p> - {% trans "스탠퍼드 대학교 및 실리콘 밸리행 티켓 (2월 중 일주일 간 방문)" %}</p>
+		<p> - {% trans "2013년 2월 스탠퍼드 대학교 내 VC3 이벤트 참가 자격" %}</p>
+		<p>   {% trans "(VC3 : 3분 내에 벤처케피탈리스트들로 구성된 패널에게 자신의 비지니스 모델 및 프로토타입을 피칭하고 피드백을 받는 이벤트)" %} </p>
+		<p> - {% trans "Y Combinator 출신 실리콘 밸리 파운더들로부터 멘토링" %}</p>
+		<p> - {% trans "한국, 중국, 일본 우승 팀들 간의 긴밀한 교류" %} </p>
+	</div>
+
+</div>
+
 {% endblock %}
