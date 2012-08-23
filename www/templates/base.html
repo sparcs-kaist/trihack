@@ -2,33 +2,37 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta charset="utf-8" />
-        <link href="/media/css/style.css" rel="stylesheet" />
+		<link href="{{MEDIA_URL}}css/style.css" rel="stylesheet" />
         <title> TriHack </title>
         {% block style %} {% endblock %}
     </head>
 
     <body>
-        <!-- header -->
-		<div id="header"> 
-			<ul id="main_nav">
-				<li id="menu_register"><img src = "{{MEDIA_URL}}image/register.png" /></li>
-				<li id="menu_about"><img src = "{{MEDIA_URL}}image/about.png" /></li>
-				<li id="menu_forum"><img src = "{{MEDIA_URL}}image/forum.png" /></li>
-			</ul>
-		</div>
+		<div id="main">
+		<div id="main_wrapper">
+			<!-- header -->
+			<section id="header"> 
+				<ul id="main_nav">
+					<li id="menu_register"><img src = "{{MEDIA_URL}}image/register.png" /></li>
+					<li id="menu_about"><img src = "{{MEDIA_URL}}image/about.png" /></li>
+					<li id="menu_forum"><img src = "{{MEDIA_URL}}image/forum.png" /></li>
+				</ul>
+			</section>
 
-		<!-- body -->
-		<div id="content">
-			{% block content %} {% endblock %}
-		</div>
+			<!-- body -->
+			<section id="content">
+				{% block content %} {% endblock %}
+			</section>
 
-		<!-- footer -->
-		<div id="footer"> 
-			<p id="copyright">Copyright &copy; SPARCS 2012 All Rights Reserved </p>
-			<p id="homepage">TRIHACK Homepage</p>
-			<p id="organizer">ASES STARTWAVE SPARCS </p>
-			<p id="sponsor">NEXON</p>
+			<!-- footer -->
+			<section id="footer"> 
+				<hr>
+				<p id="copyright">Copyright &copy; SPARCS 2012 All Rights Reserved </p>
+				<p id="homepage">TRIHACK Homepage</p>
+				<p id="organizer">ASES STARTWAVE SPARCS </p>
+				<p id="sponsor">NEXON</p>
+			</section>
 		</div>
-		
+		</div>
     </body>
 </html>
