@@ -10,7 +10,7 @@ var MainLink = {
 			$("#backtomain").css('background-color', '#FBD250');
 		});
 		this.backtomain.bind('mouseleave', function() {
-			$("#backtomain").css('background-color', '#FBD250');
+			$("#backtomain").css('background-color', '#FFFFFF');
 		});
 	}
 }
