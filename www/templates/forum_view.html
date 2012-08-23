@@ -41,7 +41,7 @@
 <div id = "bottom_buttons">
 	<form action = "" method="POST"> 
 		{% csrf_token %}
-		<input type=submit value = "like">	<input type=submit value = "hate"> {{postData.like} - {{postData.hate}} <br/>
+		<input type=submit value = "like">	<input type=submit value = "hate"> {{postData.like}} - {{postData.hate}} <br/>
 		COMMENT {{ postData.commentnumber }}
 		<br/>
 	</form>
