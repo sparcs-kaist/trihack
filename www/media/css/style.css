@@ -1,13 +1,17 @@
 body {
     background-color: #FBFBFB;
 }
+
 hr,p{
     margin:0px;
 }
 #main {
-    width: 1098px;
+    width: 1088px;
     height: auto;
     margin: 0 auto;
+    background-color: #FFFFFF;
+    border-left: 5px solid #F8F8F8;
+    border-right: 5px solid #F8F8F8;
 }
 #main_wrapper {
     width: 1034px;
@@ -32,7 +36,7 @@ hr,p{
     float: left;
 }
 #menu_register a {
-float: left;
+    float: left;
     width: 74px;
     height: 23px;
     margin-left: 29px;
