@@ -17,30 +17,30 @@
 			</div>
 			<table>
 				<tr>
-					<td><label for="name" class="register_labels">name</label><input type="text" name="name" class="register_inputs"/></td>
+					<td><label for="name" class="register_labels">team name</label><input type="text" name="team" class="register_inputs" value="{{team}}"/><font id="error">{{teamE}}</font></td>
 				</tr>
 				<tr>
-					<td><label for="email" class="register_labels">e-mail</label><input type="text" name="email" class="register_inputs"/></td>
-					<td><label for="contact" class="register_labels">contact</label><input type="text" name="contact" class="register_inputs"/></td>
+					<td><label for="email" class="register_labels">e-mail</label><input type="text" name="email" class="register_inputs" value="{{email}}"/><font id="error">{{emailE}}</font></td>
+					<td><label for="contact" class="register_labels">contact</label><input type="text" name="contact" class="register_inputs" value="{{contact}}"/><font id="error">{{contactE}}</font></td>
 				</tr>
 				<tr>
 					<td>expertise <span id="graytext">(check the expert areas of your team)</span></td>
 				</tr>
 				<tr>
 					<td>
-						<input type="checkbox" name="Web">Web
-						<input type="checkbox" name="iOS">iOS
-						<input type="checkbox" name="Android">Android
-						<input type="checkbox" name="UI/UX Design">UI/UX Desgin
-						<input type="checkbox" name="Front-end">Front-end
+						<input type="checkbox" name="expertise" value="web" {% if expertise_check.0 %} checked=""{% endif %}>web
+						<input type="checkbox" name="expertise" value="ios" {% if expertise_check.1 %} checked=""{% endif %}>ios
+						<input type="checkbox" name="expertise" value="android" {% if expertise_check.2 %} checked=""{% endif %}>android
+						<input type="checkbox" name="expertise" value="ui/ux design" {% if expertise_check.3 %} checked=""{% endif %}>ui/ux design
+						<input type="checkbox" name="expertise" value="front-end" {% if expertise_check.4 %} checked=""{% endif %}>front-end
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<input type="checkbox" name="Back-end">Back-end
-						<input type="checkbox" name="Systems">Systems
-						<input type="checkbox" name="Security">Security
-						<input type="checkbox" name="Database">Database
+						<input type="checkbox" name="expertise" value="back-end" {% if expertise_check.5 %} checked=""{% endif %}>back-end
+						<input type="checkbox" name="expertise" value="systems" {% if expertise_check.6 %} checked=""{% endif %}>systems
+						<input type="checkbox" name="expertise" value="security" {% if expertise_check.7 %} checked=""{% endif %}>security
+						<input type="checkbox" name="expertise" value="database" {% if expertise_check.8 %} checked=""{% endif %}>database
 					</td>
 				</tr>
 			</table>
@@ -71,12 +71,12 @@
 		</br>
 		<div id="Countryinfo">
 			<div id="Countryinfo" class="register_titles">
-				<p>Country Info</p>
+				<p>Country Info<font id="error">{{countryE}}</font></p>
 			</div>
 			<div id="Countryinfo_selection">
-				<input type="radio" name="country" value="KOREA">KOREA
-				<input type="radio" name="country" value="JAPAN">JAPAN
-				<input type="radio" name="country" value="CHINA">CHINA
+				<input type="radio" name="country" value="KOREA" {% if country_check.0 %} checked="" {% endif %}>KOREA
+				<input type="radio" name="country" value="JAPAN" {% if country_check.1 %} checked="" {% endif %}>JAPAN
+				<input type="radio" name="country" value="CHINA" {% if country_check.2 %} checked="" {% endif %}>CHINA
 		</div>
 		<input type="submit" value="SUBMIT" />
 	</form>
