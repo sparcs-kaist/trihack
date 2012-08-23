@@ -27,13 +27,17 @@
 }
 #content_bottom .slogan {
     margin-left: 56px;
+    background-color: #FFFFFF
 }
 #content_bottom_title {
     height: 56px;
 }
 #bluearrow {
     float: left;
+    background-color: #FFFFFF;
 }
 #whatthehack {
     float: left;
+    background-color: #FFFFFF;
 }
+

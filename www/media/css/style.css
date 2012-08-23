@@ -40,7 +40,7 @@ img {
     list-style-image: none;
 }
 #main_nav li {
-    display: block;
+    display: inline;
 }
 #main_nav a {
     display: block;
@@ -96,6 +96,9 @@ img {
 }
 
 #footer_right{
+    float:right;
+}
+#organizer {
     float:right;
 }
 #sponsor {
