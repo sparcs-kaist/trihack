@@ -18,6 +18,8 @@ hr,p{
 /* navigation */
 #header {
     margin-top: 30px;
+    height:25px;
+
 }
 #main_nav {
     display: inline;

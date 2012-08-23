@@ -1,114 +1,84 @@
 {% extends "base.html" %}
+
+{% block style %}<link href='/media/css/register.css' type='text/css' rel='stylesheet'>{% endblock %}
 {% block content %}
-<section id="main">
+
 
 <div id="title" style="text-align:center">
-    <img src="{{MEDIA_URL}}image/register.png" alt="register title"/>
+	<img src="{{MEDIA_URL}}image/main_logo.png" alt="register title"/><br>
+	<p id="title_text">REGISTER</p>
 </div>
 
 <div id="contents">
-{% block style %}<link href='/media/css/register.css' type='text/css' rel='stylesheet'>{% endblock %}
-
-<div class="ss-form-container">
-	<div class="ss-form-heading">
-		<div class="ss-required-asterisk">* Required</div>
-	</div>
-	<div class="ss-form">
-	<form action="." method="POST" id="ss-form">{% csrf_token %}
-	<br>
-	<div class="errorbox-good">
-		<div class="ss-item ss-item-required ss-text">
-			<div class="ss-form-entry">
-				<label class="ss-q-title" for="entry_0">{{ nameT }}<span class="ss-required-asterisk">{{ nameE }}*</span></label>
-				<label class="ss-q-help" for="entry_0"></label>
-				<input type="text" name="entry.0.single" value="{{ name }}" class="ss-q-short" id="entry_0">
+	<form id="register_form" method="POST" action=".">{% csrf_token %}
+		<div id="Teaminfo">
+			<div id="Teaminfo_title" class="register_titles">
+				<p>Team Info</p>
 			</div>
+			<table>
+				<tr>
+					<td><label for="name" class="register_labels">name</label><input type="text" name="name" class="register_inputs"/></td>
+				</tr>
+				<tr>
+					<td><label for="email" class="register_labels">e-mail</label><input type="text" name="email" class="register_inputs"/></td>
+					<td><label for="contact" class="register_labels">contact</label><input type="text" name="contact" class="register_inputs"/></td>
+				</tr>
+				<tr>
+					<td>expertise <span id="graytext">(check the expert areas of your team)</span></td>
+				</tr>
+				<tr>
+					<td>
+						<input type="checkbox" name="Web">Web
+						<input type="checkbox" name="iOS">iOS
+						<input type="checkbox" name="Android">Android
+						<input type="checkbox" name="UI/UX Design">UI/UX Desgin
+						<input type="checkbox" name="Front-end">Front-end
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="checkbox" name="Back-end">Back-end
+						<input type="checkbox" name="Systems">Systems
+						<input type="checkbox" name="Security">Security
+						<input type="checkbox" name="Database">Database
+					</td>
+				</tr>
+			</table>
 		</div>
-	</div>
-	<br> 
-	<div class="errorbox-good">
-		<div class="ss-item ss-item-required ss-text">
-			<div class="ss-form-entry">
-				<label class="ss-q-title" for="entry_3">{{ teamT }}<span class="ss-required-asterisk">{{ teamE }}*</span></label>
-				<label class="ss-q-help" for="entry_3"></label>
-				<input type="text" name="entry.3.single" value="{{ team }}" class="ss-q-short" id="entry_3">
+		</br>
+		<div id="Membersinfo">
+			<div id="Membersinfo_title" class="register_titles">
+				<p>Member(s) Info</p>	
 			</div>
+			<table>
+				<tr>
+					<td><label class="Membersinfo_counts">01</label></td>
+					<td><label class="Membersinfo_counts">02</label></td>
+					<td><label class="Membersinfo_counts">03</label></td>
+				</tr>
+				<tr>
+					<td><label for="members_name1" class="register_labels">name</label><input type="text" name="members_name1" class="register_inputs"/></td>
+					<td><label for="members_name2" class="register_labels">name</label><input type="text" name="members_name2" class="register_inputs"/></td>
+					<td><label for="members_name3" class="register_labels">name</label><input type="text" name="members_name3" class="register_inputs"/></td>
+				</tr>
+				<tr>
+					<td><label for="members_unitersity1" class="register_labels">university</label><input type="text" name="members_unitersity1" class="register_inputs"/></td>
+					<td><label for="members_unitersity1" class="register_labels">university</label><input type="text" name="members_unitersity1" class="register_inputs"/></td>
+					<td><label for="members_unitersity1" class="register_labels">university</label><input type="text" name="members_unitersity1" class="register_inputs"/></td>
+				</tr>
+			</table>
 		</div>
-	</div>
-	<br> 
-	<div class="errorbox-good">
-		<div class="ss-item ss-item-required ss-text">
-			<div class="ss-form-entry">
-				<label class="ss-q-title" for="entry_1">{{ emailT }}<span class="ss-required-asterisk">{{ emailE }}*</span></label>
-				<label class="ss-q-help" for="entry_1"></label>
-				<input type="text" name="entry.1.single" value="{{ email }}" class="ss-q-short" id="entry_1">
+		</br>
+		<div id="Countryinfo">
+			<div id="Countryinfo" class="register_titles">
+				<p>Country Info</p>
 			</div>
+			<div id="Countryinfo_selection">
+				<input type="radio" name="country" value="KOREA">KOREA
+				<input type="radio" name="country" value="JAPAN">JAPAN
+				<input type="radio" name="country" value="CHINA">CHINA
 		</div>
-	</div>
-	<br> 
-	<div class="errorbox-good">
-		<div class="ss-item ss-item-required ss-radio">
-			<div class="ss-form-entry">
-				<label class="ss-q-title" for="entry_2">{{ locationT }}<span class="ss-required-asterisk">{{ locationE }}*</span></label>
-				<label class="ss-q-help" for="entry_2"></label>
-				<ul class="ss-choices">
-					<li class="ss-choice-item">
-					<label class="ss-choice-label">
-						<input type="radio" name="entry.2.group" value="Korea" {% if  location == "Korea" %} checked="checked" {% endif %}class="ss-q-radio" id="group_2_1">
-						Korea
-					</label>
-					</li> 
-					<li class="ss-choice-item">
-					<label class="ss-choice-label">
-						<input type="radio" name="entry.2.group" value="Japan" {% if location == "Japan" %} checked="checked" {% endif %}class="ss-q-radio" id="group_2_2">
-						Japan
-					</label>
-					</li> 
-					<li class="ss-choice-item">
-					<label class="ss-choice-label">
-						<input type="radio" name="entry.2.group" value="China" {% if location == "China" %} checked="checked" {% endif %}class="ss-q-radio" id="group_2_3">
-						China
-					</label>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div>
-	<br>
-	<input type="hidden" name="pageNumber" value="0">
-	<input type="hidden" name="backupCache" value="">
-
-
-	<div class="ss-item ss-navigate">
-		<div class="ss-form-entry">
-			<input type="submit" name="submit" value="Submit">
-		</div>
-	</div>
-</form>
-<script type="text/javascript">
-      
-      (function() {
-var divs = document.getElementById('ss-form').
-getElementsByTagName('div');
-var numDivs = divs.length;
-for (var j = 0; j < numDivs; j++) {
-if (divs[j].className == 'errorbox-bad') {
-divs[j].lastChild.firstChild.lastChild.focus();
-return;
-}
-}
-for (var i = 0; i < numDivs; i++) {
-var div = divs[i];
-if (div.className == 'ss-form-entry' &&
-div.firstChild &&
-div.firstChild.className == 'ss-q-title') {
-div.lastChild.focus();
-return;
-}
-}
-})();
-      </script></div>
-
-</section>
-
+		<input type="submit" value="SUBMIT" />
+	</form>
+</div>
 {% endblock %}
