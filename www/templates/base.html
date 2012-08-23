@@ -11,27 +11,31 @@
 		<div id="main">
 		<div id="main_wrapper">
 			<!-- header -->
-			<section id="header"> 
+			<div id="header"> 
 				<ul id="main_nav">
 					<li id="menu_register"><img src = "{{MEDIA_URL}}image/register.png" /></li>
 					<li id="menu_about"><img src = "{{MEDIA_URL}}image/about.png" /></li>
 					<li id="menu_forum"><img src = "{{MEDIA_URL}}image/forum.png" /></li>
 				</ul>
-			</section>
+			</div>
 
 			<!-- body -->
-			<section id="content">
+			<div id="content">
 				{% block content %} {% endblock %}
-			</section>
+			</div>
 
 			<!-- footer -->
-			<section id="footer"> 
-				<hr>
-				<p id="copyright">Copyright &copy; SPARCS 2012 All Rights Reserved </p>
-				<p id="homepage">TRIHACK Homepage</p>
-				<p id="organizer">ASES STARTWAVE SPARCS </p>
-				<p id="sponsor">NEXON</p>
-			</section>
+			<hr>
+			<div id="footer"> 
+				<div id="footer_left">
+					<p id="copyright" class="footer_contents">Copyright &copy; <span class="blacktext">SPARCS 2012</span> All Rights Reserved </p>
+					<p id="homepage" class="footer_contents"><span class="blacktext">TRIHACK </span>Homepage</p>
+				</div>
+				<div id="footer_right">
+					<p id="organizer" class="footer_contents">Organizers <span class="blacktext">ASES STARTWAVE SPARCS</span> </p>
+					<p id="sponsor" class="footer_contents">Sponsor <span class="blacktext">NEXON</span></p>
+				</div>
+			</div>
 		</div>
 		</div>
     </body>

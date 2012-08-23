@@ -1,6 +1,9 @@
 body {
     background-color: #FBFBFB;
 }
+hr,p{
+    margin:0px;
+}
 #main {
     width: 1098px;
     height: auto;
@@ -16,4 +19,34 @@ body {
     margin: 0 auto;
     width: 1034px;
     height: auto;
+}
+
+#footer {
+    font-size: 13px;
+    letter-spacing:2px;
+    font-family : "Century Gothic";
+    color:#B6B6B6;
+    margin:0px;
+    height:72px;
+    margin-top:21px;
+}
+.footer_contents {
+    margin: 0px;
+    margin-top:11px;
+    margin-left:32px;
+    margin-right:32px;
+}
+#footer_left {
+    float:left;
+}
+
+#footer_right{
+    float:right;
+}
+#sponsor {
+    float:right;
+}
+
+.blacktext{
+    color:#000000;
 }
