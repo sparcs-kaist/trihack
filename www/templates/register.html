@@ -5,80 +5,132 @@
 
 
 <div id="title" style="text-align:center">
-	<img src="{{MEDIA_URL}}image/main_logo.png" alt="register title"/><br>
+	<a href="/">
+		<img src="{{MEDIA_URL}}image/main_logo.png" alt="register title"/></a><br>
 	<p id="title_text">REGISTER</p>
 </div>
 
 <div id="contents">
 	<form id="register_form" method="POST" action=".">{% csrf_token %}
-		<div id="Teaminfo">
+		<div id="Teaminfo" class="register_infos">
 			<div id="Teaminfo_title" class="register_titles">
-				<p>Team Info</p>
+				Team Info
 			</div>
-			<table>
-				<tr>
-					<td><label for="name" class="register_labels">team name</label><input type="text" name="team" class="register_inputs" value="{{team}}"/><font id="error">{{teamE}}</font></td>
-				</tr>
-				<tr>
-					<td><label for="email" class="register_labels">e-mail</label><input type="text" name="email" class="register_inputs" value="{{email}}"/><font id="error">{{emailE}}</font></td>
-					<td><label for="contact" class="register_labels">contact</label><input type="text" name="contact" class="register_inputs" value="{{contact}}"/><font id="error">{{contactE}}</font></td>
-				</tr>
-				<tr>
-					<td>expertise <span id="graytext">(check the expert areas of your team)</span></td>
-				</tr>
-				<tr>
-					<td>
-						<input type="checkbox" name="expertise" value="web" {% if expertise_check.0 %} checked=""{% endif %}>web
-						<input type="checkbox" name="expertise" value="ios" {% if expertise_check.1 %} checked=""{% endif %}>ios
-						<input type="checkbox" name="expertise" value="android" {% if expertise_check.2 %} checked=""{% endif %}>android
-						<input type="checkbox" name="expertise" value="ui/ux design" {% if expertise_check.3 %} checked=""{% endif %}>ui/ux design
-						<input type="checkbox" name="expertise" value="front-end" {% if expertise_check.4 %} checked=""{% endif %}>front-end
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<input type="checkbox" name="expertise" value="back-end" {% if expertise_check.5 %} checked=""{% endif %}>back-end
-						<input type="checkbox" name="expertise" value="systems" {% if expertise_check.6 %} checked=""{% endif %}>systems
-						<input type="checkbox" name="expertise" value="security" {% if expertise_check.7 %} checked=""{% endif %}>security
-						<input type="checkbox" name="expertise" value="database" {% if expertise_check.8 %} checked=""{% endif %}>database
-					</td>
-				</tr>
-			</table>
+			<div class="register_sections">
+				<table id="register_table">
+					<tr>
+						<td class="teaminfo_table_label">
+							<label for="name" class="register_labels">name</label>
+						</td>
+						<td class="teaminfo_table_input">
+							<input type="text" name="team" class="register_inputs" value="{{team}}"/><font id="error">{{teamE}}</font>
+						</td>
+					</tr>
+					<tr>
+						<td class="teaminfo_table_label">
+							<label for="email" class="register_labels">e-mail</label>
+						</td>
+						<td class="teaminfo_table_input">
+							<input type="text" name="email" class="register_inputs" value="{{email}}"/><font id="error">{{emailE}}</font>
+						</td>
+						<td class="teaminfo_table_label">
+							<label for="contact" class="register_labels">contact</label>
+						</td>
+						<td class="teaminfo_table_input">
+							<input type="text" name="contact" class="register_inputs" value="{{contact}}"/><font id="error">{{contactE}}</font>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="4">expertise <span class="graytext">(check the expert areas of your team)</span></td>
+					</tr>
+					<tr>
+						<td colspan="4">
+							<input type="checkbox" name="expertise" value="web" {% if expertise_check.0 %} checked=""{% endif %}>Web
+							<input type="checkbox" name="expertise" value="ios" {% if expertise_check.1 %} checked=""{% endif %}>iOS
+							<input type="checkbox" name="expertise" value="android" {% if expertise_check.2 %} checked=""{% endif %}>Android
+							<input type="checkbox" name="expertise" value="ui/ux design" {% if expertise_check.3 %} checked=""{% endif %}>UI/UX Design
+							<input type="checkbox" name="expertise" value="front-end" {% if expertise_check.4 %} checked=""{% endif %}>Front-End
+						</td>
+					</tr>
+					<tr>
+						<td colspan="4">
+							<input type="checkbox" name="expertise" value="back-end" {% if expertise_check.5 %} checked=""{% endif %}>Back-End
+							<input type="checkbox" name="expertise" value="systems" {% if expertise_check.6 %} checked=""{% endif %}>Systems
+							<input type="checkbox" name="expertise" value="security" {% if expertise_check.7 %} checked=""{% endif %}>Security
+							<input type="checkbox" name="expertise" value="database" {% if expertise_check.8 %} checked=""{% endif %}>Database
+						</td>
+					</tr>
+				</table>
+			</div>
 		</div>
-		</br>
-		<div id="Membersinfo">
+		<div id="Membersinfo" class="register_infos">
 			<div id="Membersinfo_title" class="register_titles">
-				<p>Member(s) Info</p>	
+				Member(s) Info	
 			</div>
-			<table>
-				<tr>
-					<td><label class="Membersinfo_counts">01</label></td>
-					<td><label class="Membersinfo_counts">02</label></td>
-					<td><label class="Membersinfo_counts">03</label></td>
-				</tr>
-				<tr>
-					<td><label for="members_name1" class="register_labels">name</label><input type="text" name="members_name1" class="register_inputs"/></td>
-					<td><label for="members_name2" class="register_labels">name</label><input type="text" name="members_name2" class="register_inputs"/></td>
-					<td><label for="members_name3" class="register_labels">name</label><input type="text" name="members_name3" class="register_inputs"/></td>
-				</tr>
-				<tr>
-					<td><label for="members_unitersity1" class="register_labels">university</label><input type="text" name="members_unitersity1" class="register_inputs"/></td>
-					<td><label for="members_unitersity1" class="register_labels">university</label><input type="text" name="members_unitersity1" class="register_inputs"/></td>
-					<td><label for="members_unitersity1" class="register_labels">university</label><input type="text" name="members_unitersity1" class="register_inputs"/></td>
-				</tr>
-			</table>
+			<div class="register_sections">
+				<table id="Membersinfo_table">
+					<tr>
+						<td colspan=2><label class="Membersinfo_counts">01</label></td>
+						<td colspan=2><label class="Membersinfo_counts">02</label></td>
+						<td colspan=2><label class="Membersinfo_counts">03</label></td>
+					</tr>
+					<tr>
+						<td class="membersinfo_label">
+							<label for="members_name1" class="register_labels">name</label>
+						</td>
+						<td>
+							<input type="text" name="members_name1" class="register_inputs"/>
+						</td>
+						<td class="membersinfo_label">
+							<label for="members_name2" class="register_labels">name</label>
+						</td>
+						<td>
+							<input type="text" name="members_name2" class="register_inputs"/>
+						</td>
+						<td class="membersinfo_label">
+							<label for="members_name3" class="register_labels">name</label>
+						</td>
+						<td>
+							<input type="text" name="members_name3" class="register_inputs"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="membersinfo_label">
+							<label for="members_unitersity1" class="register_labels">university</label>
+						</td>
+						<td>
+							<input type="text" name="members_unitersity1" class="register_inputs"/>
+						</td>
+						<td class="membersinfo_label">
+							<label for="members_unitersity1" class="register_labels">university</label>
+						</td>
+						<td>
+							<input type="text" name="members_unitersity1" class="register_inputs"/>
+						</td>
+						<td class="membersinfo_label">
+							<label for="members_unitersity1" class="register_labels">university</label>
+						</td>
+						<td>
+							<input type="text" name="members_unitersity1" class="register_inputs"/>
+						</td>
+					</tr>
+				</table>
+			</div>
 		</div>
-		</br>
-		<div id="Countryinfo">
+		<div id="Countryinfo" class="register_infos">
 			<div id="Countryinfo" class="register_titles">
-				<p>Country Info<font id="error">{{countryE}}</font></p>
+				Country Info<font id="error">{{countryE}}</font>
 			</div>
-			<div id="Countryinfo_selection">
+			<div id="Countryinfo_selection" class="register_sections">
 				<input type="radio" name="country" value="KOREA" {% if country_check.0 %} checked="" {% endif %}>KOREA
 				<input type="radio" name="country" value="JAPAN" {% if country_check.1 %} checked="" {% endif %}>JAPAN
 				<input type="radio" name="country" value="CHINA" {% if country_check.2 %} checked="" {% endif %}>CHINA
+			</div>
 		</div>
-		<input type="submit" value="SUBMIT" />
+		<div id="submit">
+			<input type="image" src="/media/image/register_submit.png">
+		</div>
+		<div id="clear" style="height:10px;"></div>
 	</form>
 </div>
 {% endblock %}

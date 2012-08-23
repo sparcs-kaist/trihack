@@ -1,11 +1,89 @@
 #title img 
 {
-    display: block;
+    margin-bottom: 20px;
     margin-left: auto;
     margin-right: auto; 
 }
-
+#title_text
+{
+    font-family:"Century Gothic";
+    color:#EE295D;
+    font-size:15px;
+    letter-spacing:3px;
+}
+.graytext 
+{
+    color:#9E9E9E;
+}
+#contents{
+    font-family:"Century Gothic";
+}
+#contents input {
+    text-align:center;
+}
 #error
 {
     color: #FF0000;
+}
+
+.register_titles{
+    display: inline;
+    padding-left: 32px;
+    padding-right: 17px;
+    background-color: #404040;
+    color: #FFFFFF;
+    font-size:15px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.register_infos{
+    margin-top:45px;
+}
+.register_sections
+{
+    margin-top:20px;
+    margin-left:32px;
+    color:#404040;
+}
+
+.teaminfo_table_label
+{
+    width:47px;
+}
+
+.teaminfo_table_input
+{
+    width:190px;
+}
+.register_inputs
+{
+    width:176px;
+    background-color: #FFFFFF;
+    border-color: #000000;
+    border-top-width:0;    
+    border-left-width:0;
+    border-right-width:0;
+    border-bottom-width:1px;
+}
+#Membersinfo_table
+{
+    width:800px;
+}
+.Membersinfo_counts
+{
+    border-bottom: 2px solid #545454;
+}
+.membersinfo_label
+{
+    width:65px;
+    font-size:15px;
+}
+#submit
+{
+    float:right;
+}
+#clear
+{
+    clear:both;
 }
