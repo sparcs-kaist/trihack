@@ -106,6 +106,9 @@ def register(request):
             error = True
         
         if not error :
+            f = open("../result.txt","a+")
+            f.write(' / '.join([team,email,contact,str(expertise_check),members_name1,members_name2,members_name3,members_university1,members_university2,members_university3,country,str(country_check)])+"\n\n")
+            f.close()
             return render(request,'register_success.html',{})
         
     return render(request,'register.html',

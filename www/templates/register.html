@@ -6,8 +6,12 @@
 
 <div id="title" style="text-align:center">
 	<a href="/">
-		<img src="{{MEDIA_URL}}image/main_logo.png" alt="register title"/></a><br>
-	<p id="title_text">REGISTER</p>
+		<img src="{{MEDIA_URL}}image/main_logo.png" alt="register title"/></a>
+	<br>
+	<a href="/register/">
+		<img src="{{MEDIA_URL}}image/register_registerletter.png" alt="register" />
+	</a>
+
 </div>
 
 <div id="contents">
@@ -79,19 +83,22 @@
 							<label for="members_name1" class="register_labels">name</label>
 						</td>
 						<td>
-							<input type="text" name="members_name1" class="register_inputs"/>
+							<input type="text" name="members_name1" class="register_inputs" value="{{members_name1}}">
+							<font id="error">{{members_name1E}}</font>
 						</td>
 						<td class="membersinfo_label">
 							<label for="members_name2" class="register_labels">name</label>
 						</td>
 						<td>
-							<input type="text" name="members_name2" class="register_inputs"/>
+							<input type="text" name="members_name2" class="register_inputs" value="{{members_name2}}">
+							<font id="error">{{members_name2E}}</font>
 						</td>
 						<td class="membersinfo_label">
 							<label for="members_name3" class="register_labels">name</label>
 						</td>
 						<td>
-							<input type="text" name="members_name3" class="register_inputs"/>
+							<input type="text" name="members_name3" class="register_inputs" value="{{members_name3}}">
+							<font id="error">{{members_name3E}}</font>
 						</td>
 					</tr>
 					<tr>
@@ -99,19 +106,22 @@
 							<label for="members_unitersity1" class="register_labels">university</label>
 						</td>
 						<td>
-							<input type="text" name="members_unitersity1" class="register_inputs"/>
+							<input type="text" name="members_university1" class="register_inputs" value="{{members_university1}}">
+							<font id="error">{{members_university1E}}</font>
 						</td>
 						<td class="membersinfo_label">
 							<label for="members_unitersity1" class="register_labels">university</label>
 						</td>
 						<td>
-							<input type="text" name="members_unitersity1" class="register_inputs"/>
+							<input type="text" name="members_university2" class="register_inputs" value="{{members_university2}}">
+							<font id="error">{{members_university2E}}</font>
 						</td>
 						<td class="membersinfo_label">
 							<label for="members_unitersity1" class="register_labels">university</label>
 						</td>
 						<td>
-							<input type="text" name="members_unitersity1" class="register_inputs"/>
+							<input type="text" name="members_university3" class="register_inputs" value="{{members_university3}}">
+							<font id="error">{{members_university3E}}</font>
 						</td>
 					</tr>
 				</table>
