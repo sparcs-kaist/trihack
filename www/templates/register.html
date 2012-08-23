@@ -1,6 +1,28 @@
 {% extends "base.html" %}
 
-{% block style %}<link href="/media/css/register.css" type="text/css" rel="stylesheet">{% endblock %}
+{% block style %}
+<link href="/media/css/register.css" type="text/css" rel="stylesheet">
+<script language="JavaScript">
+
+function disableEnterKey(e)
+{
+     var key;      
+     if(window.event)
+          key = window.event.keyCode; //IE
+     else
+          key = e.which; //firefox      
+
+     return (key != 13);
+}
+
+$('document').ready(function() {
+	var a = $('#register_form input')
+	a.each(function(index){
+		$(a[index]).attr('onKeyPress','return disableEnterKey(event)');
+	})
+});
+</script>
+{% endblock %}
 {% block content %}
 
 
