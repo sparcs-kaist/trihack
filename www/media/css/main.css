@@ -1,0 +1,21 @@
+#content_top {
+    display: table-cell;
+    width: 1024px;
+    height: 555px;
+    text-align: center;
+    vertical-align: middle;
+}
+#content_bottom {
+    display: block;
+    width: 1024px;
+    height: 240px;
+}
+#main_logo {
+    margin-bottom: 18px;
+}
+#content_bottom {
+    margin: 0;
+}
+#content_bottom .slogan {
+    margin-left: 56px;
+}
