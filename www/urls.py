@@ -6,6 +6,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     (r'^$', 'django.views.generic.simple.direct_to_template', {'template': 'index.html'}),
+    (r'^about/$', 'django.views.generic.simple.direct_to_template', {'template': 'about.html'}),
     (r'^register/$','accounts.views.register'),
     (r'^login/$','accounts.views.login_page'),
     (r'^logout/$','accounts.views.logout'),
