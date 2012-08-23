@@ -48,20 +48,40 @@
 						<td colspan="4">expertise <span class="graytext">(check the expert areas of your team)</span></td>
 					</tr>
 					<tr>
-						<td colspan="4">
-							<input type="checkbox" name="expertise" value="web" {% if expertise_check.0 %} checked=""{% endif %} tabindex=4>Web
-							<input type="checkbox" name="expertise" value="ios" {% if expertise_check.1 %} checked=""{% endif %} tabindex=5>iOS
-							<input type="checkbox" name="expertise" value="android" {% if expertise_check.2 %} checked=""{% endif %} tabindex=6>Android
-							<input type="checkbox" name="expertise" value="ui/ux design" {% if expertise_check.3 %} checked=""{% endif %} tabindex=7>UI/UX Design
-							<input type="checkbox" name="expertise" value="front-end" {% if expertise_check.4 %} checked=""{% endif %} tabindex=8>Front-End
-						</td>
-					</tr>
-					<tr>
-						<td colspan="4">
-							<input type="checkbox" name="expertise" value="back-end" {% if expertise_check.5 %} checked=""{% endif %} tabindex=9>Back-End
-							<input type="checkbox" name="expertise" value="systems" {% if expertise_check.6 %} checked=""{% endif %} tabindex=10>Systems
-							<input type="checkbox" name="expertise" value="security" {% if expertise_check.7 %} checked=""{% endif %} tabindex=11>Security
-							<input type="checkbox" name="expertise" value="database" {% if expertise_check.8 %} checked=""{% endif %} tabindex=12>Database
+						<td colspan="4" >
+							<table id="expertise_table">
+								<tr class="teaminfo_expertise">
+									<td>
+										<input type="checkbox" name="expertise" value="web" {% if expertise_check.0 %} checked=""{% endif %} tabindex=4>web
+									</td>
+									<td>
+										<input type="checkbox" name="expertise" value="ios" {% if expertise_check.1 %} checked=""{% endif %} tabindex=5>ios
+									</td>
+									<td>
+										<input type="checkbox" name="expertise" value="android" {% if expertise_check.2 %} checked=""{% endif %} tabindex=6>android
+									</td>
+									<td>
+										<input type="checkbox" name="expertise" value="front-end" {% if expertise_check.4 %} checked=""{% endif %} tabindex=7>front-end
+									</td>
+									<td>
+										<input type="checkbox" name="expertise" value="back-end" {% if expertise_check.5 %} checked=""{% endif %} tabindex=8>back-end
+									</td>
+								</tr>
+								<tr class="teaminfo_expertise">
+									<td colspan="2">
+										<input type="checkbox" name="expertise" value="ui/ux design" {% if expertise_check.3 %} checked=""{% endif %} tabindex=9>UI/UX design
+									</td>
+									<td>
+										<input type="checkbox" name="expertise" value="systems" {% if expertise_check.6 %} checked=""{% endif %} tabindex=10>systems
+									</td>
+									<td>
+										<input type="checkbox" name="expertise" value="security" {% if expertise_check.7 %} checked=""{% endif %} tabindex=11>security
+									</td>
+									<td>
+										<input type="checkbox" name="expertise" value="database" {% if expertise_check.8 %} checked=""{% endif %} tabindex=12>database
+									</td>
+								</tr>
+							</table>
 						</td>
 					</tr>
 				</table>

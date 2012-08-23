@@ -3,6 +3,9 @@
     margin-left: auto;
     margin-right: auto; 
 }
+tr{
+    height:27px
+}
 #title_text
 {
     font-family:"Century Gothic";
@@ -12,6 +15,7 @@
 }
 .graytext 
 {
+    font-size:14px;
     color:#9E9E9E;
 }
 #contents{
@@ -24,7 +28,14 @@
 {
     color: #FF0000;
 }
-
+#expertise_table{
+    width:500px;
+    margin-left:10px;
+}
+#register_table
+{
+    width:550px;
+}
 .register_titles{
     display: inline;
     padding-left: 32px;
