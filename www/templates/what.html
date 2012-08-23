@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block style %}
+<link rel = "stylesheet" href = "{{MEDIA_URL}}css/what.css" screen="media" />
+{% endblock %}
+
+{% block content %}
+<div id = "content"> 
+	<div id = "content_top">
+		<a href = "/"><img src = "{{MEDIA_URL}}image/what_backtomain.png" /></a>
+		<img src = "{{MEDIA_URL}}image/what_change.png" />
+		<img src = "{{MEDIA_URL}}image/what_influence.png" />
+		<img src = "{{MEDIA_URL}}image/what_build.png" />
+	</div>
+	<div id = "content_bottom">
+		<img src = "{{MEDIA_URL}}image/what_photo.png" />
+		<img src = "{{MEDIA_URL}}image/what_everything.png" />
+		<img src = "{{MEDIA_URL}}image/what_you.png" />
+		<img src = "{{MEDIA_URL}}image/what_once.png" />
+	</div>
+
+</div>
+{% endblock %}
