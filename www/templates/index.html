@@ -1,14 +1,22 @@
 {% extends "base.html" %}
 
+{% block style %}
+<link rel="stylesheet" href="{{MEDIA_URL}}css/main.css" media="screen" />
+{% endblock %}
+
 {% block content %}
 <div id="content">
-	<img src = "{{MEDIA_URL}}image/main_logo.png" />
-	<img src = "{{MEDIA_URL}}image/main_content.png" />
+	<div id="content_top">
+		<img src = "{{MEDIA_URL}}image/main_logo.png" id = "main_logo" /><br />
+		<img src = "{{MEDIA_URL}}image/main_content.png" id = "main_content" />
+	</div>
 
-	<img src = "{{MEDIA_URL}}image/bluearrow.png" />
-	<img src = "{{MEDIA_URL}}image/whatisthetrihack.png" />
-	<img src = "{{MEDIA_URL}}image/change.png" />
-	<img src = "{{MEDIA_URL}}image/influence.png" />
-	<img src = "{{MEDIA_URL}}image/build.png" />
+	<div id="content_bottom">
+		<img src = "{{MEDIA_URL}}image/bluearrow.png" />
+		<img src = "{{MEDIA_URL}}image/whatisthetrihack.png" /><br />
+		<img src = "{{MEDIA_URL}}image/change.png" class="slogan" /><br />
+		<img src = "{{MEDIA_URL}}image/influence.png" class="slogan" /><br />
+		<img src = "{{MEDIA_URL}}image/build.png" class="slogan" />
+	</div>
 </div>
 {% endblock %}
