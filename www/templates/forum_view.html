@@ -2,6 +2,7 @@
 
 {% block content %}
 <script language="javascript">
+	x
 	function boardlist(){
 		location.href = '/forum?category={{ category }}'
 	}
@@ -39,9 +40,11 @@
 </div>
 
 <div id = "bottom_buttons">
-	<form action = "" method="POST"> 
+	<form action = "/forum/read/?id={{postData.id}}&category={{category}}" method="POST"> 
 		{% csrf_token %}
-		<input type=submit value = "like">	<input type=submit value = "hate"> {{postData.like}} - {{postData.hate}} <br/>
+		<input type=hidden name=id size=0 value={{ postData.id }}>
+		<input type=hidden name=category size=0 value={{ category }}>
+		<input type=submit name=like value = "like">	<input type=submit name=hate value = "hate"> +{{ postData.like }}  -{{ postData.hate }} <br/>
 		COMMENT {{ postData.commentnumber }}
 		<br/>
 	</form>

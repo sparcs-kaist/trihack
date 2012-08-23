@@ -35,10 +35,22 @@ def showlist(request):
 
     return render(request, 'forum_list.html', {'boardList':boardList.page(page), 'contacts':contacts, 'title':title, 'totalCnt':totalCnt, 'current_page':current_page, 'category':pk, 'user':request.user})
 
-
+@csrf_exempt
 def view_work(request):
-    if request.method == 'post':
-        pass
+    if request.method == 'POST':
+		pk = int(request.POST.get('id', -1))
+		category = request.POST.get('category', '')
+		postData = Post.objects.get(id = pk)
+		
+		if 'like' in request.POST:
+			postData.like = postData.like + 1
+		elif 'hate' in request.POST:
+			postData.hate = postData.hate + 1
+		
+		postData.save()
+
+		url = "/forum/read/?id=" + str(pk) + "&category=" + category
+		return HttpResponseRedirect(url)
     else:
         pk = int(request.GET.get('id', -1))
         category = request.GET.get('category', '')
