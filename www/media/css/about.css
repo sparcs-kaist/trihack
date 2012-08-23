@@ -10,6 +10,13 @@
     margin-bottom: 47px;
 }
 
+#content_2{
+    height:170px;
+}
+
+#content_3{
+    height:250px;
+}
 .content_title {
     display: inline;
     padding-left: 32px;
@@ -33,10 +40,19 @@
     display: inline;
 }
 
-div .content_help {
+.content_help {
     float: left;
 }
 
-div .content_body {
+.content_body {
     float: left;
+}
+
+#content_winner_title
+{
+    float:left;
+}
+#content_winner_help
+{
+    float:left;
 }

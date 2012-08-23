@@ -1,43 +1,6 @@
 {% extends "base.html" %}
+{% load i18n %}
+
 {% block content %}
-<section id="main">
-
-<div id="title" style="text-align:center">
-    <img src="{{MEDIA_URL}}image/register.png" alt="register title"/>
-</div>
-
-<div id="contents">
-{% block style %}<link href='/media/css/register.css' type='text/css' rel='stylesheet'>{% endblock %}
-
-<div class="ss-form-container">
-	<div class="ss-form-heading">
-		<p> 접수가 정상적으로 완료되었습니다. </p>
-	</div>
-	
-<script type="text/javascript">
-      
-      (function() {
-var divs = document.getElementById('ss-form').
-getElementsByTagName('div');
-var numDivs = divs.length;
-for (var j = 0; j < numDivs; j++) {
-if (divs[j].className == 'errorbox-bad') {
-divs[j].lastChild.firstChild.lastChild.focus();
-return;
-}
-}
-for (var i = 0; i < numDivs; i++) {
-var div = divs[i];
-if (div.className == 'ss-form-entry' &&
-div.firstChild &&
-div.firstChild.className == 'ss-q-title') {
-div.lastChild.focus();
-return;
-}
-}
-})();
-      </script></div>
-
-</section>
-
+{% trans "접수가 완료되었습니다." %}
 {% endblock %}
