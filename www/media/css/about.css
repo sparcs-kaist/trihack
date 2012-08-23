@@ -71,7 +71,7 @@ p {
     margin-bottom: 3px;
 }
 
-.content_bigo .content_help {
+.content_bigo p[class=content_help] {
     margin-top: -6px;
 }
 
