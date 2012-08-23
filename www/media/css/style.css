@@ -31,20 +31,20 @@ hr,p{
     display: block;
     float: left;
 }
-#menu_register {
-    float: left;
+#menu_register a {
+float: left;
     width: 74px;
     height: 23px;
     margin-left: 29px;
     background: url(/media/image/register.png) no-repeat top left;
 }
-#menu_about {
+#menu_about a {
     float: right;
     width: 53px;
     height: 23px;
     background: url(/media/image/about.png) no-repeat top left;
 }
-#menu_forum {
+#menu_forum a {
     float: right;
     width: 56px;
     height: 23px;
