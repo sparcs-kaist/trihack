@@ -1,6 +1,24 @@
 {% extends "base.html" %}
 {% load i18n %}
-
+{% block style %}
+<link href="/media/css/register_success.css" type="text/css" rel="stylesheet">{% endblock %}
 {% block content %}
-{% trans "접수가 완료되었습니다." %}
+<div id="title" style="text-align:center">
+	<a href="/">
+		<img src="{{MEDIA_URL}}image/logo.png" alt="main"/></a>
+	<br>
+	<a href="/register/">
+		<img src="{{MEDIA_URL}}image/register_registerletter.png" alt="register" />
+	</a>
+</div>
+<div id="register_success">
+	{% trans "접수가 완료되었습니다." %}
+</div>
+<div id="submit">
+	<a href="/">
+		<img src="/media/image/gohome.png" alt="gohome" width="80px"/>
+	</a>
+</div>
+<div id="clear" height="10px">
+</div>
 {% endblock %}
