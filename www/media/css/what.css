@@ -1,0 +1,29 @@
+#clear {
+    height: 10px;
+    clear: both;
+}
+#content_top {
+    margin-top: 24px;
+    margin-bottom: 47px;
+}
+
+#content_top_content {
+    margin-left: 56px;
+}
+
+#content_bottom {
+    margin-left: 190px;
+}
+
+#content_bottom img {
+    margin-bottom: 70px;
+}
+
+#content_botom_main {
+    margin-left: 14px; 
+}
+
+#content_bottom_register {
+    float: right;
+}
+
