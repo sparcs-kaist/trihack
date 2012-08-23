@@ -6,8 +6,12 @@
 <script type = "text/javascript" src="{{MEDIA_URL}}js/index.js"></script>
 <script language = "javascript">
 	$(document).ready(function() {
-		$("#main_logo").fadeIn("slow");
-		$("#main_content").fadeIn("slow");	
+		$("#main_logo").fadeIn("slow"), function() {
+			this.style.removeAttribute("filter");
+		});
+		$("#main_content").fadeIn("slow", function() {
+			this.style.removeAttribute("filter");
+		});
 	});
 </script>
 {% endblock %}
