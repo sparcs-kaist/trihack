@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+<script language="javascript">
+	function modifyCheck() {
+		var form = document.modifyform;
+
+		if(!form.title.value)
+		{
+			alert("제목을 적으세요");
+			form.name.focus();
+			return;
+		}
+		if(!form.contents.value)
+		{
+			alert("내용을 적으세요");
+			form.contents.focus();
+			return;
+		}
+		form.submit();
+	}
+</script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+
+<div id = "title" style = "text-align:center">
+	<a href = "/"><img src="{{MEDIA_URL}}image/logo.png" alt="main logo"/></a><br/>
+	<img src="{{MEDIA_URL}}image/forum_title.png" alt="forum title"/><br/>
+</div>
+
+<div id = "modify_form">
+	<form name=modifyform method=post action="/forum/domodify/">
+		<input type=hidden name=id size=0 value={{ postData.id }}>
+		<input type=hidden name=category size=0 value={{ category }}>
+		TITLE <input type=text name=title size=50 maxlength=50 value="{{ postData.title }}" ><br/>
+		<br/>
+		
+		<textarea name=contents cols=50 rows=10>{{ postData.text }}</textarea><br/>
+		<br/>
+
+		<input type=button value="수정" OnClick="javascript:modifyCheck();">
+	</form>
+</div>
+
+{% endblock %}
+

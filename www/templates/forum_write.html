@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+<script language="javascript">
+	function writeCheck() {
+		var form = document.writeform;
+
+		if(!form.title.value)
+		{
+			alert("제목을 적으세요");
+			form.name.focus();
+			return;
+		}
+		if(!form.contents.value)
+		{
+			alert("내용을 적으세요");
+			form.contents.focus();
+			return;
+		}
+		form.submit();
+	}
+</script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+
+<div id = "title" style = "text-align:center">
+	<a href = "/"><img src="{{MEDIA_URL}}image/logo.png" alt="main logo"/></a><br/>
+	<img src="{{MEDIA_URL}}image/forum_title.png" alt="forum title"/><br/>
+</div>
+
+<div id = "write_form">
+	<form name=writeform method=post action="/forum/dowrite/">
+		TITLE <input type=text name=title size=50 maxlength=50><br/>
+		<br/>
+		
+		<textarea name=contents cols=50 rows=10></textarea><br/>
+		<br/>
+
+		CATEGORY 
+		<select name=category>
+			{% if category == 'notice' %}
+				<option value="notice" selected=True>Notice</option>
+			{% else %}
+				<option value="notice">Notice</option>
+			{% endif %}
+	
+			{% if category == 'free' %}
+				<option value="free" selected=True>Free Board</option>
+			{% else %}
+				<option value="free">Free Board</option>
+			{% endif %}
+		<br/>
+
+		<input type=button value="등록" OnClick="javascript:writeCheck();">
+	</form>
+</div>
+
+{% endblock %}

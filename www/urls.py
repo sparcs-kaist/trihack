@@ -11,7 +11,7 @@ urlpatterns = patterns('',
     (r'^register/$','accounts.views.register'),
     (r'^login/$','accounts.views.login_page'),
     (r'^logout/$','accounts.views.logout'),
-    (r'^forum/$','forum.views.forum_page'),
+	(r'^forum/', include('www.forum.urls')),
     
     # Media Root
     (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': './media'}),

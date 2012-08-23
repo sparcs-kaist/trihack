@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+<script language="javascript">
+	function boardlist(){
+		location.href = '/forum?category={{ category }}'
+	}
+	
+	function boardmodify(){
+		location.href = '/forum/modify?id={{ postData.id }}&category={{ category }}'
+	}
+	
+	function boarddelete(){
+		location.href = '/forum/delete?id={{ postData.id }}&category={{ category }}'
+	}
+</script>
+
+<div id="title" style="text-align:center">
+	<a href = "/"><img src="{{MEDIA_URL}}image/logo.png" alt="main logo"/></a><br/>
+	<img src="{{MEDIA_URL}}image/forum_title.png" alt="forum title"/><br/>
+</div>
+
+<div id = "post">
+	{{ postData.title }} <br/>
+	{{ postData.user }} ({{ postData.modified_on|date:"Y-m-d H:i" }}) <br/>
+	<br/>
+
+	{{ postData.text }}
+	<br/>
+</div>
+
+<div id = "bottom_buttons">
+	<input type=button value="목록" OnClick="javascript:boardlist()">
+	{% if postData.user == user or user.is_superuser %}
+		<input type=button value="수정" OnClick="javascript:boardmodify()">
+		<input type=button value="삭제" OnClick="javascript:boarddelete()">
+	{% endif %}
+	<br/>
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
