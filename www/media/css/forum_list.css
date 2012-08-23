@@ -1,0 +1,65 @@
+#forum
+{
+    margin-left:32px;
+}
+#forum hr{
+    display:block;
+    height:10px;
+    border:none;
+    background:url(/media/image/hr.png);
+}
+#forum_contents
+{
+    margin-top:20px;
+    margin-right:32px;
+}
+
+.forum_list_article
+{
+    font-family:"Century Gothic";
+    margin-bottom:10px;
+    margin-top:10px;
+}
+.forum_list_article_top
+{
+    color:#979797;
+    font-size:13px;
+}
+
+.forum_list_article_top span
+{
+    font-size:11px;
+}
+
+.forum_list_article_mid_title
+{
+    color:#000000;
+    font-size:20px;
+}
+.forum_list_article_mid a 
+{
+    text-decoration:none;
+    
+}
+.forum_list_article_mid_preview p
+{
+    color:#858585;
+    font-size:15px;
+}
+.forum_list_article_bottom
+{
+    float:right;
+    font-size:13px;
+}
+#forum_bottom_write
+{
+    float:right;
+}
+.graytext
+{
+    color:#c3c3c3;
+}
+#clear
+{
+    clear:both;
+}

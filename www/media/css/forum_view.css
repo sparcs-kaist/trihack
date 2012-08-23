@@ -1,0 +1,75 @@
+.forum_hr{
+    display:block;
+    height:10px;
+    border:none;
+    background:url(/media/image/hr.png);
+}
+#forum_content
+{
+    margin-left:32px;
+    margin-right:32px;
+}
+#forum_post
+{
+    font-family:"Century Gothic";
+}
+#forum_post_title
+{
+    display:block;
+    font-size:20px;
+    color:#404040;
+}
+#forum_post_title_box
+{
+    float:left;
+    background-color:#404040;
+    margin-left:-50px;
+    height:20px;
+    width:40px;
+}
+#forum_post_info
+{
+    font-size:13px;
+    color:#383838;
+    margin-bottom:30px;
+}
+#forum_post_content
+{
+    color:#494949;
+    font-size:15px;
+    margin-bottom:40px;
+}
+#forum_post_content_box
+{
+    float:left;
+    background-color:#404040;
+    margin-left:-50px;
+    height:15px;
+    width:40px;
+}
+#forum_post_buttons
+{
+    font-size:13px;
+    margin-bottom:20px;
+}
+#forum_post_buttons input
+{
+    margin:0px;
+    padding:0px;
+    font-size:13px;
+    border:0px;
+    background:transparent;
+}
+
+.graytext{
+    text-decoration:underline;
+    color:#4a4a4a;
+}
+
+.rightbutton{
+    float:right;
+    margin-left:20px;
+}
+.clear{
+    clear:both;
+}

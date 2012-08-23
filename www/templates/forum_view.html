@@ -1,8 +1,9 @@
 {% extends "base.html" %}
-
+{% block style %}
+<link rel="stylesheet" href="/media/css/forum_view.css">
+{% endblock %}
 {% block content %}
 <script language="javascript">
-	x
 	function boardlist(){
 		location.href = '/forum?category={{ category }}'
 	}
@@ -21,33 +22,52 @@
 	<img src="{{MEDIA_URL}}image/forum_title.png" alt="forum title"/><br/>
 </div>
 
-<div id = "top_buttons">
-	<input type=button value="Back" OnClick="javascript:boardlist()">
-	{% if postData.user == user or user.is_superuser %}
-		<input type=button value="MODIFY" OnClick="javascript:boardmodify()">
-		<input type=button value="DELETE" OnClick="javascript:boarddelete()">
-	{% endif %}
-	<br/>
-</div>
-
-<div id = "post">
-	{{ postData.title }} <br/>
-	{{ postData.user }} ({{ postData.modified_on|date:"Y-m-d H:i" }}) <br/>
-	<br/>
-
-	{{ postData.text }}
-	<br/>
-</div>
-
-<div id = "bottom_buttons">
-	<form action = "/forum/read/?id={{postData.id}}&category={{category}}" method="POST"> 
-		{% csrf_token %}
-		<input type=hidden name=id size=0 value={{ postData.id }}>
-		<input type=hidden name=category size=0 value={{ category }}>
-		<input type=submit name=like value = "like">	<input type=submit name=hate value = "hate"> +{{ postData.like }}  -{{ postData.hate }} <br/>
-		COMMENT {{ postData.commentnumber }}
+<div id="forum_content">
+	<div id = "top_buttons">
+		<a href="/forum?category={{category}}" alt="back"><img src="{{MEDIA_URL}}image/button_back.png"></a>
+		{% if postData.user == user or user.is_superuser %}
+			<a href="/forum/delete?id={{ postData.id }}&category={{category}}" alt="delete" class="rightbutton">
+				<img src="{{MEDIA_URL}}image/button_delete.png">
+			</a>
+			<a href="/forum/modify?id={{ postData.id }}&category={{ category}}" alt="modify" class="rightbutton">
+				<img src="{{MEDIA_URL}}image/button_modify.png">
+			</a>	
+		
+		{% endif %}
 		<br/>
-	</form>
+	</div>
+
+	<div id = "forum_post">
+		<div id="forum_post_title_box">
+		</div>
+		<div id="forum_post_title">
+			<p>{{ postData.title }}</p>
+		</div>
+		<div id="forum_post_info">
+			{{ postData.user }} ({{ postData.modified_on|date:"Y-m-d H:i" }})
+		</div>
+
+		<div id="forum_post_content_box">
+		</div>	
+		<div id="forum_post_content">
+			<p>{{ postData.text }}</p>
+		</div>
+		<div id = "forum_post_buttons">
+			<form action = "/forum/read/?id={{postData.id}}&category={{category}}" method="POST"> 
+				{% csrf_token %}
+				<input type=hidden name=id size=0 value={{ postData.id }}>
+				<input type=hidden name=category size=0 value={{ category }}>
+				<input type=submit name=like value = "UP" class="graytext">	
+				<input type=submit name=hate value="DOWN" class="graytext"> +{{ postData.like }}  -{{ postData.hate }}&nbsp&nbsp 
+				<span class="graytext">COMMENT</span> + {{ postData.commentnumber }}
+				<br/>
+			</form>
+		</div>
+	</div>
+	<hr class="forum_hr">
+	<div id="forum_comments">
+		<h1>COMMENT</h1>
+	</div>
 </div>
 {% endblock %}
 
