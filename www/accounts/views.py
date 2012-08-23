@@ -84,21 +84,9 @@ def register(request):
         if members_name1 == None or members_name1.strip() == '':
             members_name1E = "There is no first member name"
             error = True
-        if members_name2 == None or members_name2.strip() == '':
-            members_name2E = "There is no second member name"
-            error = True
-        if members_name3 == None or members_name3.strip() == '':
-            members_name3E = "There is no third member name"
-            error = True
         
         if members_university1 == None or members_university1.strip() == '':
             members_university1E = "There is no first member university"
-            error = True
-        if members_university2 == None or members_university2.strip() == '':
-            members_university2E = "There is no second member university"
-            error = True
-        if members_university3 == None or members_university3.strip() == '':
-            members_university3E = "There is no third member university"
             error = True
 
         if country == None:
@@ -107,7 +95,7 @@ def register(request):
         
         if not error :
             f = open("../result.txt","a+")
-            f.write(' / '.join([team,email,contact,str(expertise_check),members_name1,members_name2,members_name3,members_university1,members_university2,members_university3,country,str(country_check)])+"\n\n")
+            f.write(' / '.join([team,email,contact,str(expertise_check),members_name1,members_name2,members_name3,members_university1,members_university2,members_university3,country])+"\n")
             f.close()
             return render(request,'register_success.html',{})
         

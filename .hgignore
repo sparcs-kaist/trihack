@@ -3,3 +3,4 @@ hgusers
 *.pyc
 *.db
 *.swp
+result.txt
