@@ -11,6 +11,46 @@ body {
     height: auto;
     margin: 0 auto;
 }
+
+/* navigation */
+#header {
+    margin-top: 30px;
+}
+#main_nav {
+    display: inline;
+    list-style: none;
+    list-style-image: none;
+}
+#main_nav li {
+    display: block;
+}
+#main_nav a {
+    display: block;
+    float: left;
+}
+#menu_register {
+    float: left;
+    width: 74px;
+    height: 23px;
+    margin-left: 29px;
+    background: url(/media/image/register.png) no-repeat top left;
+}
+#menu_about {
+    float: right;
+    width: 53px;
+    height: 23px;
+    background: url(/media/image/about.png) no-repeat top left;
+}
+#menu_forum {
+    float: right;
+    width: 56px;
+    height: 23px;
+    margin-left: 16px;
+    margin-right: 32px;
+    background: url(/media/image/forum.png) no-repeat top left;
+}
+
+/* navigation end */
 #content {
     background: url(/media/image/background.png) no-repeat;
     margin: 0 auto;
