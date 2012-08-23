@@ -1,6 +1,6 @@
 #content_top {
     margin-top: 24px;
-    margin-bottom: 47px;
+    margin-bottom: 42px;
 }
 
 #content_top_content {
@@ -12,10 +12,12 @@
 }
 
 #content_bottom img {
-    margin-bottom: 70px;
+    margin-bottom: 50px;
 }
 
-#content_botom_main {
+#content_bottom_main {
+    width: 561px;
+    height: 385px;
     margin-left: 14px; 
 }
 
