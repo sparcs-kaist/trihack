@@ -4,6 +4,14 @@
 
 {% block style %}
 <link rel = "stylesheet" href="{{MEDIA_URL}}css/about.css" media="screen" /> 
+
+<script src="http://www.google.com/jsapi"></script>
+<script type="text/javascript" src="{{MEDIA_URL}}js/about.js"></script>
+<script language="javascript">
+	FontFace.initialize();	
+	$(document).ready(function () {
+	});
+</script>
 {% endblock %}
 
 {% block content %}

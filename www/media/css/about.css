@@ -1,3 +1,7 @@
+body {
+    font-family: 'NanumGothic';
+}
+
 p {
     margin-bottom: 1px;
 }
@@ -75,9 +79,14 @@ p {
 }
 
 .content_bigo p[class=content_help] {
-    margin-top: -6px;
+    margin-top: -2px;
+}
+
+.content_time {
+    font-weight: bold;
 }
 
 .content_job {
     margin-bottom: 6px;
+    font-size: 85%;
 }
