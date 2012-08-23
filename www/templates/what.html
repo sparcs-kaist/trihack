@@ -7,17 +7,22 @@
 {% block content %}
 <div id = "content"> 
 	<div id = "content_top">
-		<a href = "/"><img src = "{{MEDIA_URL}}image/what_backtomain.png" /></a>
-		<img src = "{{MEDIA_URL}}image/what_change.png" />
-		<img src = "{{MEDIA_URL}}image/what_influence.png" />
-		<img src = "{{MEDIA_URL}}image/what_build.png" />
+		<a href = "/"><div id = "content_top_title">
+			<img src = "{{MEDIA_URL}}image/what_backtomain.png" />
+		</div></a>
+		<div id = "content_top_content">
+			<img src = "{{MEDIA_URL}}image/what_change.png" /><br/>
+			<img src = "{{MEDIA_URL}}image/what_influence.png" /><br/>
+			<img src = "{{MEDIA_URL}}image/what_build.png" />
+		</div>
 	</div>
 	<div id = "content_bottom">
-		<img src = "{{MEDIA_URL}}image/what_photo.png" />
-		<img src = "{{MEDIA_URL}}image/what_everything.png" />
-		<img src = "{{MEDIA_URL}}image/what_you.png" />
-		<img src = "{{MEDIA_URL}}image/what_once.png" />
+		<img src = "{{MEDIA_URL}}image/what_main.png" id = "content_bottom_main"/><br/>
+		<img src = "{{MEDIA_URL}}image/what_everything.png" /><br/>
+		<img src = "{{MEDIA_URL}}image/what_you.png" /><br/>
+		<img src = "{{MEDIA_URL}}image/what_once.png" /><br/>
+		<a href = "/register/"><img src = "{{MEDIA_URL}}image/what_register.png" id = "content_bottom_register"/></a>
 	</div>
-
+	<div id = "clear"></div>
 </div>
 {% endblock %}
