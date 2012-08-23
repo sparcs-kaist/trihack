@@ -26,6 +26,7 @@ tr{
 }
 .error {
     color: #FF0000;
+    font-size: 80%;
 }
 #expertise_table{
     width:500px;

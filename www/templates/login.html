@@ -1,30 +1,33 @@
 {% extends "base.html" %}
 
-{% block content %}
-<section id ="login">
+{% block style %}
+<link rel = "stylesheet" href="{{MEDIA_URL}}css/login.css" />
 
+{% endblock %}
+{% block content %}
+<div id="title" style="text-align:center">
+	<a href = "/"><img src="{{MEDIA_URL}}image/logo.png" alt="register title"/></a><br/>
+	<img src="{{MEDIA_URL}}image/login_title.png" alt="login title"/><br/>
+</div>
+<div id="login">
 	<div id="loginbox">
 		<form id="loginform" method="post" action=".">{% csrf_token %}
 			<div id="idPw">
 				<table id="logintable">
 					<tr>
-						<td><label for="trihackId">ID</label></td>	
-						<td><input type="text" class="signInInput" id="trihackId" name="username" tabindex="1"></td>
-						<td rowspan="2">
-							<div id="submitButton">
-								<input type="submit" class="signInButton" id="signinSubmit" tabindex="3" value="Login">
-							</div>
-						</td>
+						<td><label>ID</label></td>	
+						<td><input type="text" class="signInInput" id="trihackId" name="username" tabindex="1"/></td>
 					</tr>
 					<tr>
-						<td><label for="trihackPw">Password</label></td>
-						<td><input type="password" class="signInInput" id="trihackPw" name="password" tabindex="2"></td>
+						<td><label>PW</label></td>
+						<td><input type="password" class="signInInput" id="trihackPw" name="password" tabindex="2"/></td>
 					</tr>
 				</table>
+				<input type="submit" class="signInButton" id="signinSubmit" value=""/>
 			</div>
 		</form>
-		<p>{{ state }} </p>
+		<p id="state">{{state}}</p>
 	</div>
-</section>
+</div>
 
 {% endblock %}

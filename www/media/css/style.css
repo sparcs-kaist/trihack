@@ -54,6 +54,20 @@ img {
     margin-left: 29px;
     background: url(/media/image/register.png) no-repeat top left;
 }
+#menu_login a {
+    float: left;
+    width: 51px;
+    height: 23px;
+    margin-left: 16px;
+    background: url(/media/image/login.png) no-repeat top left;
+}
+#menu_logout a {
+    float: left;
+    width: 67px;
+    height: 23px;
+    margin-left: 16px;
+    background: url(/media/image/logout.png) no-repeat top left;
+}
 #menu_about a {
     float: right;
     width: 53px;
