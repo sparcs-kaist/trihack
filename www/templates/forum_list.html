@@ -8,40 +8,40 @@
 </div>
 
 <div id="forum">
-    <table  width=700  class="forum_list">
+	<img src = "{{MEDIA_URL}}image/forum_hot_box.png" alt="forum hot"/>
+	<img src = "{{MEDIA_URL}}image/forum_new_blackbox.png" alt="forum new"/><br/>
+    <table id = "forum_list">
     {% if boardList %}
-        <ul>
-            {% for row in boardList %}
-            <tr>
-                {{ row.user }} {{ row.modified_on|date:"Y-m-d H: i" }} <br/>
-                <a href="/forum/read?id={{ row.id }}&category={{ category }}" title="{{ row.title }}">{{ row.title }}</a><br/>
-                {{ row.like }} {{ row.hate }} {{ row.commentnumber }} <br/>
-            </tr>
-            {% endfor %}
-        </ul>
+		{% for row in boardList %}
+		<tr>
+			{{ row.user }} {{ row.modified_on|date:"Y-m-d H: i" }} <br/>
+			<a href="/forum/read?id={{ row.id }}&category={{ category }}" title="{{ row.title }}">{{ row.title }}</a><br/>
+			{{ row.like }} {{ row.hate }} {{ row.commentnumber }} <br/>
+		</tr>
+		{% endfor %}
     {% else %}
         <p>No Data.</p>
     {% endif %}
     </table>
+
+	<div id="forum_pagination">
+		<span class="step-links">
+			{% if contacts.has_previous %}
+				<a href="/forum?page={{ contacts.previous_page_number }}&category={{ category }}">Previous</a>
+			{% endif %}
+
+			<span class="current">
+				{{ contacts }}
+			</span>
+
+			{% if contacts.has_next %}
+				<a href="/forum?page={{ contacts.next_page_number }}&category={{ category }}">next</a>
+			{% endif %}
+		</span>
+	</div>
+
+	<input type=button value="글쓰기" OnClick="window.location='/forum/write/?category={{ category }}'" />
 </div>
-
-<div class="pagination">
-    <span class="step-links">
-        {% if contacts.has_previous %}
-            <a href="/forum?page={{ contacts.previous_page_number }}&category={{ category }}">Previous</a>
-        {% endif %}
-
-        <span class="current">
-            {{ contacts }}
-        </span>
-
-        {% if contacts.has_next %}
-            <a href="/forum?page={{ contacts.next_page_number }}&category={{ category }}">next</a>
-        {% endif %}
-    </span>
-</div>
-
-<input type=button value="글쓰기" OnClick="window.location='/forum/write/?category={{ category }}'">
 
 {% endblock %}
 
