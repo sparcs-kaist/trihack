@@ -5,6 +5,15 @@ body {
 hr,p{
     margin:0px;
 }
+
+img {
+    border: none;
+}
+#clear {
+    height: 10px;
+    clear: both;
+} 
+
 #main {
     width: 1088px;
     height: auto;
