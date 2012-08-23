@@ -33,11 +33,10 @@
     display: inline;
 }
 
-#content_nayong {
-    display: inline;
+div .content_help {
+    float: left;
 }
 
-#content_jangso {
-    display: inline;
+div .content_body {
+    float: left;
 }
-
