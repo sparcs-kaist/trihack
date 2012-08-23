@@ -17,6 +17,16 @@ p {
     margin-bottom: 47px;
 }
 
+#content_1 {
+    height: 90px;
+}
+#content_1 p {
+    margin-bottom: 3px;
+}
+br {
+    line-height: 150%;
+}
+
 #content_2{
     height:210px;
 }
@@ -25,7 +35,8 @@ p {
     height:270px;
 }
 #content_4{
-    padding-top:3px;
+    height:110px;
+    margin-top:88px;
 }
 .content_title {
     display: inline;
