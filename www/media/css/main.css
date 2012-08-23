@@ -19,3 +19,12 @@
 #content_bottom .slogan {
     margin-left: 56px;
 }
+#content_bottom_title {
+    height: 56px;
+}
+#bluearrow {
+    float: left;
+}
+#whatthehack {
+    float: left;
+}
