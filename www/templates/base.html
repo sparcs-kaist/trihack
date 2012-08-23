@@ -4,6 +4,21 @@
         <meta charset="utf-8" />
 		<link href="{{MEDIA_URL}}css/style.css" rel="stylesheet" />
 
+		<script type="text/javascript" src="{{MEDIA_URL}}js/jquery-1.6.2.min.js"></script>	
+		<script language="javascript">
+			$(document).ready(function() {
+				if(location.href.indexOf("/register/") != -1){
+					$('#menu_register a').css('background','url(/media/image/register_registeruper.png)');				
+				}
+				else if(location.href.indexOf("/about/") != -1){
+					$('#menu_about a').css('background','url(/media/image/about_active.png)');
+				}
+				else if(location.href.indexOf("/forum/") != -1){
+					$('#menu_forum a').css('background','url(/media/image/forum_active.png)');
+				}
+
+			});
+		</script>
         <title> TriHack </title>
         {% block style %} {% endblock %}
     </head>
