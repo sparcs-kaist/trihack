@@ -20,6 +20,15 @@
 	<img src="{{MEDIA_URL}}image/forum_title.png" alt="forum title"/><br/>
 </div>
 
+<div id = "top_buttons">
+	<input type=button value="Back" OnClick="javascript:boardlist()">
+	{% if postData.user == user or user.is_superuser %}
+		<input type=button value="MODIFY" OnClick="javascript:boardmodify()">
+		<input type=button value="DELETE" OnClick="javascript:boarddelete()">
+	{% endif %}
+	<br/>
+</div>
+
 <div id = "post">
 	{{ postData.title }} <br/>
 	{{ postData.user }} ({{ postData.modified_on|date:"Y-m-d H:i" }}) <br/>
@@ -30,12 +39,12 @@
 </div>
 
 <div id = "bottom_buttons">
-	<input type=button value="목록" OnClick="javascript:boardlist()">
-	{% if postData.user == user or user.is_superuser %}
-		<input type=button value="수정" OnClick="javascript:boardmodify()">
-		<input type=button value="삭제" OnClick="javascript:boarddelete()">
-	{% endif %}
-	<br/>
+	<form action = "" method="POST"> 
+		{% csrf_token %}
+		<input type=submit value = "like">	<input type=submit value = "hate"> {{postData.like} - {{postData.hate}} <br/>
+		COMMENT {{ postData.commentnumber }}
+		<br/>
+	</form>
 </div>
 {% endblock %}
 
