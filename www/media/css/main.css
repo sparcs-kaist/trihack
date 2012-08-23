@@ -2,8 +2,6 @@
     display: table-cell;
     width: 1024px;
     height: 555px;
-    text-align: center;
-    vertical-align: middle;
 }
 #content_bottom {
     display: block;
@@ -11,7 +9,18 @@
     height: 240px;
 }
 #main_logo {
+    width: 231px;
+    height: 253px;
+    margin-left: 396px;
+    margin-top: 129px;
     margin-bottom: 18px;
+    background-color: #FFFFFF;
+}
+#main_content {
+    width: 509px;
+    height: 15px;
+    margin-left: 258px;
+    background-color: #FFFFFF;
 }
 #content_bottom {
     margin: 0;

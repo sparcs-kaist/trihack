@@ -2,13 +2,20 @@
 
 {% block style %}
 <link rel = "stylesheet" href = "{{MEDIA_URL}}css/what.css" screen="media" />
+
+<script type="text/javascript" src="{{MEDIA_URL}}js/what.js"></script>
+<script language = "javascript">
+	$(document).ready(function() {
+		MainLink.initialize();
+	});
+</script>
 {% endblock %}
 
 {% block content %}
 <div id = "content"> 
 	<div id = "content_top">
 		<a href = "/"><div id = "content_top_title">
-			<img src = "{{MEDIA_URL}}image/what_backtomain.png" />
+			<img src = "{{MEDIA_URL}}image/what_backtomain.png" id="backtomain"/>
 		</div></a>
 		<div id = "content_top_content">
 			<img src = "{{MEDIA_URL}}image/what_change.png" /><br/>
