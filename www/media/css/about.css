@@ -22,8 +22,10 @@ p {
 }
 .content_title {
     display: inline;
+    padding-top: 4px;
     padding-left: 32px;
     padding-right: 17px;
+    padding-bottom: 7px;
     margin-right: 10px;
     background-color: #404040;
     color: #FFFFFF;
@@ -60,6 +62,7 @@ p {
 #content_winner_help
 {
     float:left;
+    margin-top: 4px;
 }
 
 .content_nayong {
