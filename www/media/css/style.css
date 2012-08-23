@@ -9,7 +9,8 @@ hr,p{
 img {
     border: none;
 }
-#clear {
+
+.clear {
     height: 10px;
     clear: both;
 } 

@@ -1,12 +1,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<link href="{{MEDIA_URL}}css/style.css" rel="stylesheet" />
 
 		<script type="text/javascript" src="{{MEDIA_URL}}js/jquery-1.6.2.min.js"></script>	
 		<script type="text/javascript" src="{{MEDIA_URL}}js/base.js"></script>
-		<script language="javascript">
+		<script type="text/javascript">
 			$(document).ready(function() {
 				MainNav.initialize();
 			});
@@ -26,12 +26,12 @@
 					<li id="menu_about"><a href = "/about/"></a></li>
 				</ul>
 			</div>
-			<div id="clear"></div>
+			<div class="clear"></div>
 
 			<!-- body -->
 			{% block content %} {% endblock %}
 			<!-- footer -->
-			<hr>
+			<hr/>
 			<div id="footer"> 
 				<div id="footer_left">
 					<p id="copyright" class="footer_contents">Copyright &copy; <span class="blacktext">SPARCS 2012</span> All Rights Reserved </p>

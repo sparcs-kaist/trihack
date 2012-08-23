@@ -24,8 +24,7 @@ tr{
 #contents input {
     text-align:center;
 }
-#error
-{
+.error {
     color: #FF0000;
 }
 #expertise_table{

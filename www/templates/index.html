@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{{MEDIA_URL}}css/main.css" media="screen" />
 
 <script type = "text/javascript" src="{{MEDIA_URL}}js/index.js"></script>
-<script language = "javascript">
+<script type = "text/javascript">
 	$(document).ready(function() {
 		WhatLink.initialize();
 		LoadAnim.initialize();
@@ -15,20 +15,20 @@
 {% block content %}
 <div id="content">
 	<div id="content_top">
-		<img src = "{{MEDIA_URL}}image/main_logo.png" id = "main_logo" /><br />
-		<img src = "{{MEDIA_URL}}image/main_content.png" id = "main_content" />
+		<img src = "{{MEDIA_URL}}image/main_logo.png" id = "main_logo" alt = "main_logo" /><br />
+		<img src = "{{MEDIA_URL}}image/main_content.png" id = "main_content" alt = "main_content" />
 	</div>
 
 	<div id="content_bottom">
-		<a href = "/trihack/"><div id="content_bottom_title">
-			<img src = "{{MEDIA_URL}}image/bluearrow.png" id="bluearrow" />
-			<img src = "{{MEDIA_URL}}image/whatisthetrihack.png" id="whatthehack" />
-		</div></a>
-		<div id = "clear"></div>
+		<a href = "/trihack/"><object id="content_bottom_title">
+			<img src = "{{MEDIA_URL}}image/bluearrow.png" id="bluearrow" alt="bluearrow" />
+			<img src = "{{MEDIA_URL}}image/whatisthetrihack.png" id="whatthehack" alt="whatthehack" />
+		</object></a>
+		<div class = "clear"></div>
 
-		<img src = "{{MEDIA_URL}}image/change.png" class="slogan" id="slogan_change" /><br />
-		<img src = "{{MEDIA_URL}}image/influence.png" class="slogan" id="slogan_influence" /><br />
-		<img src = "{{MEDIA_URL}}image/build.png" class="slogan" id="slogan_build" />
+		<img src = "{{MEDIA_URL}}image/change.png" class="slogan" id="slogan_change" alt="change" /><br />
+		<img src = "{{MEDIA_URL}}image/influence.png" class="slogan" id="slogan_influence" alt="influence"/><br />
+		<img src = "{{MEDIA_URL}}image/build.png" class="slogan" id="slogan_build" alt="build"/>
 	</div>
 </div>
 {% endblock %}

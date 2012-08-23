@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 
 {% block style %}
-<link rel = "stylesheet" href = "{{MEDIA_URL}}css/what.css" screen="media" />
+<link rel = "stylesheet" href = "{{MEDIA_URL}}css/what.css" media="screen" />
 
 <script type="text/javascript" src="{{MEDIA_URL}}js/what.js"></script>
-<script language = "javascript">
+<script type="text/javascript">
 	$(document).ready(function() {
 		MainLink.initialize();
 	});
@@ -14,21 +14,21 @@
 {% block content %}
 <div id = "content"> 
 	<div id = "content_top">
-		<a href = "/"><div id = "content_top_title">
-			<img src = "{{MEDIA_URL}}image/what_backtomain.png" id="backtomain"/>
-		</div></a>
+		<a href = "/"><object id = "content_top_title">
+			<img src = "{{MEDIA_URL}}image/what_backtomain.png" id="backtomain" alt="backtomain" />
+		</object></a>
 		<div id = "content_top_content">
-			<img src = "{{MEDIA_URL}}image/what_change.png" /><br/>
-			<img src = "{{MEDIA_URL}}image/what_influence.png" /><br/>
-			<img src = "{{MEDIA_URL}}image/what_build.png" />
+			<img src = "{{MEDIA_URL}}image/what_change.png" alt="change" /><br/>
+			<img src = "{{MEDIA_URL}}image/what_influence.png" alt="influence" /><br/>
+			<img src = "{{MEDIA_URL}}image/what_build.png" alt="build" />
 		</div>
 	</div>
 	<div id = "content_bottom">
-		<img src = "{{MEDIA_URL}}image/what_main.png" id = "content_bottom_main"/><br/>
-		<img src = "{{MEDIA_URL}}image/what_everything.png" /><br/>
-		<img src = "{{MEDIA_URL}}image/what_you.png" /><br/>
-		<img src = "{{MEDIA_URL}}image/what_once.png" /><br/>
-		<a href = "/register/"><img src = "{{MEDIA_URL}}image/what_register.png" id = "content_bottom_register"/></a>
+		<img src = "{{MEDIA_URL}}image/what_main.png" id = "content_bottom_main" alt="main_photo" /><br/>
+		<img src = "{{MEDIA_URL}}image/what_everything.png" alt="everything" /><br/>
+		<img src = "{{MEDIA_URL}}image/what_you.png" alt="you" /><br/>
+		<img src = "{{MEDIA_URL}}image/what_once.png" alt="once" /><br/>
+		<a href = "/register/"><img src = "{{MEDIA_URL}}image/what_register.png" id = "content_bottom_register" alt="register" /></a>
 	</div>
 	<div id = "clear"></div>
 </div>

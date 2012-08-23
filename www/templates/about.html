@@ -5,9 +5,9 @@
 {% block style %}
 <link rel = "stylesheet" href="{{MEDIA_URL}}css/about.css" media="screen" /> 
 
-<script src="http://www.google.com/jsapi"></script>
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
 <script type="text/javascript" src="{{MEDIA_URL}}js/about.js"></script>
-<script language="javascript">
+<script type="text/javascript">
 	FontFace.initialize();	
 	$(document).ready(function () {
 	});
@@ -60,7 +60,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="content_title">{% trans "일정 : 09월 09일 일요일" %}</div><br>
+	<div class="content_title">{% trans "일정 : 09월 09일 일요일" %}</div><br/>
 	<div class="content_content" id="content_3">
 		<div class="content_nayong"> 
 			<div class="content_help">{% trans "내용" %}</div>
@@ -89,7 +89,7 @@
 	</div>
 
 	<div class="content_title" id="content_winner_title">{% trans "우승팀에게 주어지는 기회" %}</div>
-	<div class="content_help" id="content_winner_help">{% trans "한중일 각 1개 팀 선정" %}</div><br>
+	<div class="content_help" id="content_winner_help">{% trans "한중일 각 1개 팀 선정" %}</div><br/>
 	<div class="content_content" id="content_4">
 		<p> - {% trans "스탠퍼드 대학교 및 실리콘 밸리행 티켓 (2월 중 일주일 간 방문)" %}</p>
 		<p> - {% trans "2013년 2월 스탠퍼드 대학교 내 VC3 이벤트 참가 자격" %}</p>
