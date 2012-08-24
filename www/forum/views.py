@@ -7,7 +7,6 @@ from django.http import HttpResponseRedirect,HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.contrib.comments.models import Comment
 
 
 rowsPerPage = 7
@@ -160,9 +159,11 @@ def delete_work(request):
 def write_comment(request):
     user = request.user
     post_id = int(request.POST.get('post', -1))
-    text = request.POST.get('text','')
+    content = request.POST.get('text','')
     post = Post.objects.get(pk=post_id)
-    new_comment = Comment(user=request.user, post=post, text=text, created_on=timezone_now()) 
+    url = '/forum/read/?id=%d' % post_id
+    new_comment = Comment(user=request.user, post=post, text=content)
+    new_comment.save()
 
     return HttpResponseRedirect(url)
 
@@ -170,11 +171,12 @@ def write_comment(request):
 def delete_comment(request):
     user = request.user
     comment_id = int(request.POST.get('comment', -1))
-
     comment = Comment.objects.get(id=comment_id)
+    url = '/forum/read/?id=%d' % comment.post.id
+
     if request.user != comment.user:
         return HttpResponseBadRequest()
 
     comment.delete()
-
+    
     return HttpResponseRedirect(url)

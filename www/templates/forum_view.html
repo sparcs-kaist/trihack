@@ -67,6 +67,33 @@
 	<hr class="forum_hr">
 	<div id="forum_comments">
 		<h1>COMMENT</h1>
+		{% for comment in postData.comment_set.all %}
+			<div class="forum_comment">
+				<div class="forum_comment_info">
+				{{ comment.user }} ({{ comment.created_on|date:"Y-m-d H:i" }})
+				</div>
+				<div class="forum_comment_content">
+				{{ comment.text }}
+				</div>
+			</div>
+			{% if not forloop.last %}
+			<hr class="forum_hr" />
+			{% endif %}
+		{% endfor %}
+		<form action = "/forum/write_comment/" method="POST">
+			{% csrf_token %}
+			<input type="hidden" name="post" value="{{ postData.id }}" />
+			<div id="write_comment">
+				<textarea name="text" cols=50 rows=5></textarea>
+			</div>
+			<hr id="borkenhr">
+			<div id="write_form_writebutton">
+
+				<input type=image src="{{MEDIA_URL}}image/button_write.png" OnClick="javascript:writeCheck();">
+			</div>
+			<div style="clear:both;"></div>
+			
+		</form>
 	</div>
 </div>
 {% endblock %}
