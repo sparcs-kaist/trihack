@@ -3,13 +3,13 @@ from django.shortcuts import render_to_response, render
 from django.utils import timezone
 from forum.models import *
 from django.views.decorators.csrf import csrf_exempt
-from django.http import HttpResponseRedirect,HttpResponse
+from django.http import HttpResponseRedirect,HttpResponse,HttpResponseBadRequest
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.comments.models import Comment
-
-
+from django.db import IntegrityError
+import json
 rowsPerPage = 7
 
 def showlist(request):
@@ -47,8 +47,14 @@ def showlist(request):
         texts.append(row.text)
 
     shorttexts= []
+    likes = [] 
+    hates = []
+    for i in boardList.page(page) :
+        likes.append(i.getLike())
+        hates.append(i.getHate())
+   
     shorttexts=map(lambda x: x[:200]+"..." if len(x)>200 else x,texts)
-    articlelist = zip(boardList.page(page),shorttexts)
+    articlelist = zip(boardList.page(page),shorttexts,likes,hates)
     return render(request, 'forum_list.html', {
         'articlelist':articlelist,
         'contacts':contacts, 
@@ -63,29 +69,38 @@ def showlist(request):
 
 @csrf_exempt
 def view_work(request):
-    if request.method == 'POST':
-		pk = int(request.POST.get('id', -1))
-		category = request.POST.get('category', '')
-		postData = Post.objects.get(id = pk)
-
-		if 'like' in request.POST:
-			postData.like = postData.like + 1
-		elif 'hate' in request.POST:
-			postData.hate = postData.hate + 1
-		
-		postData.save()
-
-		url = "/forum/read/?id=" + str(pk) + "&category=" + category
-		return HttpResponseRedirect(url)
-    else:
-        pk = int(request.GET.get('id', -1))
-        category = request.GET.get('category', '')
-        postData = Post.objects.get(id = pk)
-        postData.hits=postData.hits+1
-        postData.save()
+    pk = int(request.GET.get('id', -1))
+    category = request.GET.get('category', '')
+    postData = Post.objects.get(id = pk)
+    postData.hits=postData.hits+1
+    postData.save()
 #        Post.objects.filter(id = pk).update(hits=postData.hits + 1)
-        return render(request, 'forum_view.html', {'postData':postData, 'user':request.user, 'category':category, 'path':request.get_full_path()})
+    return render(request, 'forum_view.html', {'postData':postData, 'user':request.user, 'category':category, 'path':request.get_full_path(),'like':postData.getLike(),'hate':postData.getHate()})
 
+@login_required
+def vote(request):
+    if request.method == 'POST': 
+        pk = int(request.POST.get('id', -1))
+        category = request.POST.get('category', '')
+        postData = Post.objects.get(id = pk)
+
+        if 'like' in request.POST:
+            try:
+                Vote(user=request.user,post=postData,like=True).save()
+            except IntegrityError :
+                return HttpResponse(json.dumps({'state':'falied'}))
+        elif 'hate' in request.POST:
+            try:
+                Vote(user=request.user,post=postData,like=False).save()	
+            except IntegrityError:
+                return HttpResponse(json.dumps({'state':'failed'}))
+
+        url = "/forum/read/?id=" + str(pk) + "&category=" + category
+        return HttpResponse(json.dumps(
+            {'state':'success'}
+            ))
+    else :
+        return HttpResponseBadRequest()
 @login_required
 def write_work(request):
     pk = request.GET.get('category', '')
@@ -104,8 +119,6 @@ def dowrite(request):
             user = request.user,
             text = request.POST['contents'],
             hits = 0,
-            like = 0,
-            hate = 0,
             commentnumber = 0,
             category = dr)
     br.save()

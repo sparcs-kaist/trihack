@@ -12,5 +12,6 @@ urlpatterns = patterns(
 	url(r'^modify/$', views.modify_work),
 	url(r'^domodify/$', views.domodify),
 	url(r'^delete/$', views.delete_work),
+        url(r'^vote/$',views.vote),
 )
 
