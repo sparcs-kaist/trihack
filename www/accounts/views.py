@@ -12,21 +12,28 @@ import re
 def login_page(request) :
     state = ''
     username = password = ''
+    redirection = ''
     if request.POST:
         username = request.POST.get('username')
         password = request.POST.get('password')
-
+        redirection = request.POST.get('next')
         user = authenticate(username=username, password=password)
         if user is not None:
             if user.is_active:
                 login(request, user)
-                return HttpResponseRedirect('/')
+                if redirection=='' :
+                    return HttpResponseRedirect('/')
+                else :
+                    return HttpResponseRedirect(redirection)
             else:
                 state = "Your account is not active, please contact the site admin."
         else:
             state = "Your username and/or password were incorrect."
 
-    return render(request, 'login.html', {'username': username,'state': state})
+    if request.GET :
+        redirection = request.GET.get('next')
+
+    return render(request, 'login.html', {'username': username,'state': state,'next':redirection})
   
 def logout(request):
     auth.logout(request)
