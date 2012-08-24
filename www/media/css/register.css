@@ -89,6 +89,10 @@ tr{
     width:65px;
     font-size:15px;
 }
+#Countryinfo_selection
+{
+    font-size:13px;
+}
 #submit
 {
     float:right;
