@@ -4,3 +4,5 @@ hgusers
 *.db
 *.swp
 result.txt
+www/settings_local.py
+www/build/

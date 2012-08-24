@@ -14,21 +14,24 @@ class Post(models.Model):
     title = models.CharField(u"제목", max_length=100)
     user = models.ForeignKey(User, null=False,related_name="posted_user")
     created_on = models.DateTimeField(auto_now_add=True)
-    modified_on = models.DateTimeField(auto_now=True)
+    modified_on = models.DateTimeField(auto_now_add=True)
     text = models.TextField(u"내용")
     category = models.ForeignKey(Category, null=False, verbose_name=u"게시판")
     hits = models.IntegerField(null=True, default=0, blank=True)
-    commentnumber = models.IntegerField(null=True, default = 0, blank=True)
     voted = models.ManyToManyField(User,through="Vote")
 
     def __unicode__(self):
         return self.title
-    
-    def getLike(self) :
+
+    @property
+    def like(self):
         return Vote.objects.filter(user=self.user,post=self,like=True).count()
-    
-    def getHate(self) :
+    @property
+    def hate(self):
         return Vote.objects.filter(user=self.user,post=self,like=False).count()
+    @property
+    def score(self):
+        return self.like-self.hate
 
 class Comment(models.Model):
     user = models.ForeignKey(User, null=False)

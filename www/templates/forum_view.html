@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block style %}
-<link rel="stylesheet" href="/media/css/forum_view.css" />
+<link rel="stylesheet" href="{{MEDIA_URL}}css/forum.css" />
+<link rel="stylesheet" href="{{MEDIA_URL}}css/forum_view.css" />
 {% endblock %}
 {% block content %}
 <script type="text/javascript">
@@ -23,13 +24,13 @@
 </div>
 
 <div id="forum_content">
-	<div id = "top_buttons">
+	<div id="top_buttons">
 		<a style="cursor:Pointer;" onclick="history.back()"><img src="{{MEDIA_URL}}image/button_back.png" alt="back" /></a>
 		{% if postData.user == user or user.is_superuser %}
-			<a href="/forum/delete?id={{ postData.id }}&category={{category}}" alt="delete" class="rightbutton">
+			<a href="/forum/delete?id={{ postData.id }}&category={{ category }}" alt="delete" class="right">
 				<img src="{{MEDIA_URL}}image/button_delete.png">
 			</a>
-			<a href="/forum/modify?id={{ postData.id }}&category={{ category}}" alt="modify" class="rightbutton">
+			<a href="/forum/modify?id={{ postData.id }}&category={{ category }}" alt="modify" class="right">
 				<img src="{{MEDIA_URL}}image/button_modify.png">
 			</a>	
 		
@@ -37,8 +38,8 @@
 		<br/>
 	</div>
 
-	<div id = "forum_post">
-		<div id="forum_post_title_box">
+	<div id="forum_post">
+		<div id="forum_post_title_box" class="forum_black_box">
 		</div>
 		<div id="forum_post_title">
 			<p>{{ postData.title }}</p>
@@ -47,25 +48,25 @@
 			{{ postData.user }} ({{ postData.modified_on|date:"Y-m-d H:i" }})
 		</div>
 
-		<div id="forum_post_content_box">
+		<div id="forum_post_content_box" class="forum_black_box">
 		</div>	
 		<div id="forum_post_content">
-			<p>{{ postData.text }}</p>
+			<p>{{ postData.text|linebreaksbr }}</p>
 		</div>
 		<div id = "forum_post_buttons">
-			<form action = "/forum/read/?id={{postData.id}}&category={{category}}" method="post"> 
+			<form action = "/forum/vote/?id={{postData.id}}&category={{category}}" method="post"> 
 				{% csrf_token %}
 				<fieldset style="border:0; padding:0">
 					<input type="hidden" name="id" size="0" value="{{ postData.id }}" />
 					<input type="hidden" name="category" size="0" value="{{ category }}" />
 					<input type="submit" name="like" value="UP" class="graytext" />
-					<input type="submit" name="hate" value="DOWN" class="graytext" /> +{{ postData.like }}  -{{ postData.hate }}&nbsp&nbsp
-				<span class="graytext">COMMENT</span> + {{ postData.commentnumber }}
+					<input type="submit" name="hate" value="DOWN" class="graytext" /> {% if postData.like %}+{{ postData.like }}{% endif %}  {% if postData.hate %}-{{ postData.hate }}{% endif %}&nbsp;&nbsp;
+				<span class="graytext">COMMENT</span> + {{ postData.comment__count }}
 				</fieldset>
 			</form>
 		</div>
 	</div>
-	<hr class="forum_hr" />
+	<hr class="broken_hr" />
 	<div id="forum_comments">
 		<div id="forum_comments_head">COMMENTs</div>
 		<form action = "/forum/write_comment/" method="post">
@@ -74,11 +75,10 @@
 			<div id="write_comment">
 				<textarea name="text" cols="50" rows="5"></textarea>
 			</div>
-			<div id="write_form_writebutton">
-
+			<div id="write_form_writebutton" class="right">
 				<input type="image" src="{{MEDIA_URL}}image/button_write.png" onclick="javascript:writeCheck();" />
 			</div>
-			<div style="clear:both;"></div>
+			<div class="clear"></div>
 		</form>
 		{% for comment in postData.comment_set.all %}
 			<div class="forum_comment">
@@ -87,14 +87,13 @@
 				{% if comment.user == user %} <a href="/forum/delete_comment/?comment={{ comment.id }}">X</a> {% endif %}
 				</div>
 				<div class="forum_comment_content">
-				{{ comment.text }}
+				{{ comment.text|linebreaksbr }}
 				</div>
 			</div>
 			{% if not forloop.last %}
 			<hr />
 			{% endif %}
 		{% endfor %}
-
 	</div>
 </div>
 {% endblock %}
