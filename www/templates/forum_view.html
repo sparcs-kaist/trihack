@@ -67,7 +67,19 @@
 	</div>
 	<hr class="forum_hr" />
 	<div id="forum_comments">
-		<h1>COMMENT</h1>
+		<div id="forum_comments_head">COMMENTs</div>
+		<form action = "/forum/write_comment/" method="post">
+			{% csrf_token %}
+			<div style="display:none"><input type="hidden" name="post" value="{{ postData.id }}" /></div>
+			<div id="write_comment">
+				<textarea name="text" cols="50" rows="5"></textarea>
+			</div>
+			<div id="write_form_writebutton">
+
+				<input type="image" src="{{MEDIA_URL}}image/button_write.png" onclick="javascript:writeCheck();" />
+			</div>
+			<div style="clear:both;"></div>
+		</form>
 		{% for comment in postData.comment_set.all %}
 			<div class="forum_comment">
 				<div class="forum_comment_info">
@@ -79,23 +91,9 @@
 				</div>
 			</div>
 			{% if not forloop.last %}
-			<hr class="forum_hr" />
+			<hr />
 			{% endif %}
 		{% endfor %}
-		<form action = "/forum/write_comment/" method="post">
-			{% csrf_token %}
-			<div style="display:none"><input type="hidden" name="post" value="{{ postData.id }}" /></div>
-			<div id="write_comment">
-				<textarea name="text" cols="50" rows="5"></textarea>
-			</div>
-			<hr id="borkenhr" />
-			<div id="write_form_writebutton">
-
-				<input type="image" src="{{MEDIA_URL}}image/button_write.png" onclick="javascript:writeCheck();" />
-			</div>
-			<div style="clear:both;"></div>
-				
-		</form>
 	</div>
 </div>
 {% endblock %}
