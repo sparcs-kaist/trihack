@@ -56,7 +56,10 @@ def showlist(request):
         'totalCnt':totalCnt, 
         'current_page':current_page, 
         'category':pk, 
-        'user':request.user})
+        'user':request.user,
+        'boardlist':boardList,
+        'criteria':criteria,
+        })
 
 @csrf_exempt
 def view_work(request):
