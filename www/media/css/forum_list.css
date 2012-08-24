@@ -1,6 +1,6 @@
 #forum
 {
-    margin-left:32px;
+    margin: 32px;
 }
 #forum hr{
     display:block;
@@ -8,10 +8,12 @@
     border:none;
     background:url(/media/image/hr.png);
 }
+#forum_top_criteria_button{
+    float: left;
+}
 #forum_contents
 {
     margin-top:20px;
-    margin-right:32px;
 }
 
 .forum_list_article
@@ -52,7 +54,7 @@
     float:right;
     font-size:13px;
 }
-#forum_bottom_write
+#forum_write_button
 {
     float:right;
 }
