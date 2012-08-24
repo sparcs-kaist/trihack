@@ -23,15 +23,15 @@
 					</div>
 					<div class="forum_list_article_mid">
 						<a href="/forum/read?id={{ row.id }}&category={{ category }}" title="{{ row.title }}">					
-							<div class="forum_list_article_mid_title">
+							<span class="forum_list_article_mid_title">
 								{{ row.title }}
-							</div>
-							<div class="forum_list_article_mid_preview">
+							</span>
+							<span class="forum_list_article_mid_preview">
 								<p>{{shorttext}}</p>
-							</div>
+							</span>
 						</a>
 					</div>
-					<br>
+					<br />
 					<div class="forum_list_article_bottom">
 						<span class="graytext">UP DOWN  </span>{{ like|subtract:hate }} &nbsp&nbsp  
 						<span class="graytext">COMMENTS  </span>{{ row.commentnumber }}
@@ -49,15 +49,15 @@
 	</div>
 	<div id="forum_pagination">
         <span class="step-links">
-            {% for page in boardlist.page_range %}
-                <a href="/forum?page={{ page }}&category={{ category }}&criteria={{ criteria }}">{{ page }}</a>
-            {% endfor %}
+			{% for page in boardlist.page_range %}
+			<a href="/forum?page={{ page }}&category={{ category }}&criteria={{ criteria }}"><span class="page {% if current_page == page %}current_page{% endif %}">{{ page }}</span></a>
+			{% endfor %}
 		</span>
 	</div>
 
 	<div id="forum_bottom_write">
 		<a href="/forum/write/?category={{ category }}">
-			<img src="/media/image/forum_write.png">
+			<img src="/media/image/forum_write.png" alt="write article" />
 		</a>
 	</div>
 
