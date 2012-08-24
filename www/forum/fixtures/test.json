@@ -3,16 +3,14 @@
     "pk": 1,
     "model": "forum.category",
 	"fields":{
-		"name":"notice",
-		"slug":"notice"
+		"name":"notice"
 	}
   },
   {
 	"pk": 2,
 	"model": "forum.category",
 	"fields":{
-		"name":"freeboard",
-		"slug":"freeboard"
+		"name":"freeboard"
 	}
   }
 ]
