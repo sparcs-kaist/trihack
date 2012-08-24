@@ -8,6 +8,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db import IntegrityError
+from django.db.models import Count
 import json
 rowsPerPage = 7
 
@@ -16,12 +17,12 @@ def showlist(request):
     criteria = request.GET.get('criteria', 'new')
 
     if criteria == 'new':
-        boardList = Paginator(Post.objects.filter(category__name = pk).order_by('-id'), rowsPerPage)
+        boardList = Paginator(Post.objects.filter(category__name = pk).order_by('-id').annotate(Count('comment')), rowsPerPage)
     else:
         boardList = Paginator(Post.objects.filter(category__name = pk).extra(
             select={"score":'like - hate'},
             order_by = ('-score',)
-            ), rowsPerPage)
+            ).annotate(Count('comment')), rowsPerPage)
 
     page = int(request.GET.get('page', 1))
 
@@ -70,7 +71,7 @@ def showlist(request):
 def view_work(request):
     pk = int(request.GET.get('id', -1))
     category = request.GET.get('category', '')
-    postData = Post.objects.get(id = pk)
+    postData = Post.objects.filter(id = pk).annotate(Count('comment')).get()
     postData.hits=postData.hits+1
     postData.save()
 #        Post.objects.filter(id = pk).update(hits=postData.hits + 1)
@@ -118,7 +119,6 @@ def dowrite(request):
             user = request.user,
             text = request.POST['contents'],
             hits = 0,
-            commentnumber = 0,
             category = dr)
     br.save()
 

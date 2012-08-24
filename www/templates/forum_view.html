@@ -60,7 +60,7 @@
 					<input type="hidden" name="category" size="0" value="{{ category }}" />
 					<input type="submit" name="like" value="UP" class="graytext" />
 					<input type="submit" name="hate" value="DOWN" class="graytext" /> +{{ postData.like }}  -{{ postData.hate }}&nbsp&nbsp
-				<span class="graytext">COMMENT</span> + {{ postData.commentnumber }}
+				<span class="graytext">COMMENT</span> + {{ postData.comment__count }}
 				</fieldset>
 			</form>
 		</div>

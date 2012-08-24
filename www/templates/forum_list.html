@@ -34,7 +34,7 @@
 					<br />
 					<div class="forum_list_article_bottom">
 						<span class="graytext">UP DOWN  </span>{{ like|subtract:hate }} &nbsp&nbsp  
-						<span class="graytext">COMMENTS  </span>{{ row.commentnumber }}
+						<span class="graytext">COMMENTS  </span>{{ row.comment__count }}
 					</div>	
 				</div>
 				{% if not forloop.last %}

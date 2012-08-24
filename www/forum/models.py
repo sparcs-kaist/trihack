@@ -18,7 +18,6 @@ class Post(models.Model):
     text = models.TextField(u"내용")
     category = models.ForeignKey(Category, null=False, verbose_name=u"게시판")
     hits = models.IntegerField(null=True, default=0, blank=True)
-    commentnumber = models.IntegerField(null=True, default = 0, blank=True)
     voted = models.ManyToManyField(User,through="Vote")
 
     def __unicode__(self):
