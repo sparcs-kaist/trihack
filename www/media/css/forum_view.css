@@ -1,4 +1,4 @@
-#forum_content #top_buttons a{ margin-left:20px; }
+#forum_content #top_buttons a.right{ margin-left:20px; }
 #forum_post_title
 {
     display:block;
