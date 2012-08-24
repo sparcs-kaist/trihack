@@ -19,10 +19,8 @@ def showlist(request):
     if criteria == 'new':
         boardList = Paginator(Post.objects.filter(category__name = pk).order_by('-id').annotate(Count('comment')), rowsPerPage)
     else:
-        boardList = Paginator(Post.objects.filter(category__name = pk).extra(
-            select={"score":'like - hate'},
-            order_by = ('-score',)
-            ).annotate(Count('comment')), rowsPerPage)
+        posts = sorted(Post.objects.filter(category__name = pk).annotate(Count('comment'))[:], key=lambda x: x.score, reverse=True)
+        boardList = Paginator(posts, rowsPerPage)
 
     page = int(request.GET.get('page', 1))
 
