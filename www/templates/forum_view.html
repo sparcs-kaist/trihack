@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block style %}
-<link rel="stylesheet" href="/media/css/forum_view.css">
+<link rel="stylesheet" href="/media/css/forum_view.css" />
 {% endblock %}
 {% block content %}
-<script language="javascript">
+<script type="text/javascript">
 	function boardlist(){
 		location.href = '/forum?category={{ category }}'
 	}
@@ -24,7 +24,7 @@
 
 <div id="forum_content">
 	<div id = "top_buttons">
-        <a style="cursor:Pointer;" onClick="history.back()" alt="back"><img src="{{MEDIA_URL}}image/button_back.png"></a>
+        <a style="cursor:Pointer;" onclick="history.back()"><img src="{{MEDIA_URL}}image/button_back.png" alt="back" /></a>
 		{% if postData.user == user or user.is_superuser %}
 			<a href="/forum/delete?id={{ postData.id }}&category={{category}}" alt="delete" class="rightbutton">
 				<img src="{{MEDIA_URL}}image/button_delete.png">
@@ -53,18 +53,19 @@
 			<p>{{ postData.text }}</p>
 		</div>
 		<div id = "forum_post_buttons">
-			<form action = "/forum/read/?id={{postData.id}}&category={{category}}" method="POST"> 
+			<form action = "/forum/read/?id={{postData.id}}&category={{category}}" method="post"> 
 				{% csrf_token %}
-				<input type=hidden name=id size=0 value={{ postData.id }}>
-				<input type=hidden name=category size=0 value={{ category }}>
-				<input type=submit name=like value = "UP" class="graytext">	
-				<input type=submit name=hate value="DOWN" class="graytext"> +{{ postData.like }}  -{{ postData.hate }}&nbsp&nbsp 
+				<fieldset style="border:0; padding:0">
+					<input type="hidden" name="id" size="0" value="{{ postData.id }}" />
+					<input type="hidden" name="category" size="0" value="{{ category }}" />
+					<input type="submit" name="like" value="UP" class="graytext" />
+					<input type="submit" name="hate" value="DOWN" class="graytext" /> +{{ postData.like }}  -{{ postData.hate }}&nbsp&nbsp
 				<span class="graytext">COMMENT</span> + {{ postData.commentnumber }}
-				<br/>
+				</fieldset>
 			</form>
 		</div>
 	</div>
-	<hr class="forum_hr">
+	<hr class="forum_hr" />
 	<div id="forum_comments">
 		<h1>COMMENT</h1>
 		{% for comment in postData.comment_set.all %}
@@ -81,16 +82,16 @@
 			<hr class="forum_hr" />
 			{% endif %}
 		{% endfor %}
-		<form action = "/forum/write_comment/" method="POST">
+		<form action = "/forum/write_comment/" method="post">
 			{% csrf_token %}
-			<input type="hidden" name="post" value="{{ postData.id }}" />
+			<div style="display:none"><input type="hidden" name="post" value="{{ postData.id }}" /></div>
 			<div id="write_comment">
-				<textarea name="text" cols=50 rows=5></textarea>
+				<textarea name="text" cols="50" rows="5"></textarea>
 			</div>
-			<hr id="borkenhr">
+			<hr id="borkenhr" />
 			<div id="write_form_writebutton">
 
-				<input type=image src="{{MEDIA_URL}}image/button_write.png" OnClick="javascript:writeCheck();">
+				<input type="image" src="{{MEDIA_URL}}image/button_write.png" onclick="javascript:writeCheck();" />
 			</div>
 			<div style="clear:both;"></div>
 				
@@ -98,25 +99,3 @@
 	</div>
 </div>
 {% endblock %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
