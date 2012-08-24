@@ -2,11 +2,11 @@
 from django.shortcuts import render_to_response, render
 from django.utils import timezone
 from forum.models import *
-from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponseRedirect,HttpResponse,HttpResponseBadRequest
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.exceptions import ObjectDoesNotExist
 from django.db import IntegrityError
 from django.db.models import Count
 import json
@@ -67,14 +67,16 @@ def showlist(request):
         'criteria':criteria,
         })
 
-@csrf_exempt
-def view_work(request):
+def view(request):
     pk = int(request.GET.get('id', -1))
     category = request.GET.get('category', '')
-    postData = Post.objects.filter(id = pk).annotate(Count('comment')).get()
-    postData.hits=postData.hits+1
-    postData.save()
-#        Post.objects.filter(id = pk).update(hits=postData.hits + 1)
+    try:
+        postData = Post.objects.filter(id = pk).annotate(Count('comment')).get()
+        postData.hits=postData.hits+1
+        postData.save()
+    except ObjectDoesNotExist:
+        return HttpResponseBadRequest('Invalid Post Number')
+
     return render(request, 'forum_view.html', {'postData':postData, 'user':request.user, 'category':category, 'path':request.get_full_path(),'like':postData.getLike(),'hate':postData.getHate()})
 
 @login_required
@@ -101,65 +103,85 @@ def vote(request):
             ))
     else :
         return HttpResponseBadRequest()
-@login_required
-def write_work(request):
-    pk = request.GET.get('category', '')
-    return render(request, 'forum_write.html', {'category':pk, 'user':request.user})
-
 
 @login_required
-@csrf_exempt
-def dowrite(request):
-    category = request.POST.get('category', '')
-    dr = Category.objects.get(name=category)
-    # Create Post
-    br = Post( title = request.POST['title'],
-            created_on = timezone.now(),
-            modified_on = timezone.now(),
-            user = request.user,
-            text = request.POST['contents'],
-            hits = 0,
-            category = dr)
-    br.save()
+def write(request):
+    if request.method == 'GET':
+        pk = request.GET.get('category', '')
+        return render(request, 'forum_write.html', {'category':pk, 'user':request.user})
+    else:
+        category = request.POST.get('category', '')
+        try:
+            dr = Category.objects.get(name=category)
+        except ObjectDoesNotExist:
+            return HttpResponseBadRequest('Invalid Category')
 
-    url = '/forum?category=' + category
-    return HttpResponseRedirect(url)
+        # Create Post
+        br = Post( title = request.POST.get('title', 'untitled'),
+                created_on = timezone.now(),
+                modified_on = timezone.now(),
+                user = request.user,
+                text = request.POST.get('contents', ''),
+                hits = 0,
+                category = dr)
+        br.save()
 
-@login_required
-def modify_work(request):
-    pk = int(request.GET.get('id', -1))
-    category = request.GET['category']
-    postData = Post.objects.get(id = pk)
-    if postData.user != request.user:
-        return HttpResponseBadRequest()
-    return render(request, 'forum_modify.html', {'postData':postData, 'user':request.user, 'category':category})
-
+        url = '/forum?category=' + category
+        return HttpResponseRedirect(url)
 
 @login_required
-@csrf_exempt
-def domodify(request):
-    pk = int(request.POST.get('id', -1))
-    category = request.POST.get('category', '')
-    postData = Post.objects.get(id=pk)
-    if postData.user != request.user:
-        return HttpResponseBadRequest()
-    
-    postData.modified_on = timezone.now()
-    postData.title = request.POST['title']
-    postData.text = request.POST['contents']
-    
-    dr = Category.objects.get(name=category)
-    postData.category = dr
-    postData.save()
+def modify(request):
+    if request.method == 'GET':
+        pk = int(request.GET.get('id', -1))
+        category = request.GET.get('category', '')
+        try:
+            postData = Post.objects.get(id = pk)
+        except ObjectDoesNotExist:
+            return HttpResponseBadRequest('Invalid Post')
 
-    url = '/forum?category='+ category
-    return HttpResponseRedirect(url)
+        if postData.user != request.user:
+            return HttpResponseBadRequest()
+        return render(request, 'forum_modify.html', {'postData':postData, 'user':request.user, 'category':category})
+
+    else:
+        pk = int(request.POST.get('id', -1))
+        category = request.POST.get('category', '')
+        try:
+            postData = Post.objects.get(id = pk)
+        except ObjectDoesNotExist:
+            return HttpResponseBadRequest('Invalid Post')
+
+        if postData.user != request.user:
+            return HttpResponseBadRequest()
+        
+        postData.modified_on = timezone.now()
+        try:
+            postData.title = request.POST['title']
+            postData.text = request.POST['contents']
+        except:
+            return HttpResponseBadRequest('Invalid')
+ 
+        try:
+            dr = Category.objects.get(name=category)
+        except ObjectDoesNotExist:
+            return HttpResponseBadRequest('Invalid Category')
+
+        postData.category = dr
+        postData.save()
+
+        url = '/forum?category='+ category
+        return HttpResponseRedirect(url)
 
 @login_required
-def delete_work(request):
+def delete(request):
     pk = int(request.GET.get('id', -1))
     category = request.GET.get('category', '')
-    postData = Post.objects.get(id = pk)
+
+    try:
+        postData = Post.objects.get(id = pk)
+    except ObjectDoesNotExist:
+        return HttpResponseBadRequest('Invalid Post')
+
     if postData.user != request.user:
         return HttpResponseBadReqeust()
 
@@ -170,23 +192,33 @@ def delete_work(request):
 
 @login_required
 def write_comment(request):
-    user = request.user
-    post_id = int(request.POST.get('post', -1))
-    content = request.POST.get('text','')
-    post = Post.objects.get(pk=post_id)
-    url = '/forum/read/?id=%d' % post_id
-    new_comment = Comment(user=request.user, post=post, text=content)
-    new_comment.save()
+    if request.method == 'POST':
+        user = request.user
+        post_id = int(request.POST.get('post', -1))
+        content = request.POST.get('text','')
+        try:
+            post = Post.objects.get(pk=post_id)
+        except ObjectDoesNotExist:
+            return httpResponseBadRequest('Invalid Post')
 
+        url = '/forum/read/?id=%d' % post_id
+        new_comment = Comment(user=request.user, post=post, text=content)
+        new_comment.save()
 
-    return HttpResponseRedirect(url)
+        return HttpResponseRedirect(url)
+    else:
+        return HttpResponseRedirect('/')
 
 @login_required
 def delete_comment(request):
     user = request.user
     comment_id = int(request.GET.get('comment', -1))
 
-    comment = Comment.objects.get(id=comment_id)
+    try:
+        comment = Comment.objects.get(id=comment_id)
+    except ObjectDoesNotExist:
+        return httpResponseBadRequest('Invalid Approach')
+
     url = '/forum/read/?id=%d' % comment.post.id
 
     if request.user != comment.user:
