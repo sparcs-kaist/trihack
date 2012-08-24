@@ -21,6 +21,7 @@ class Post(models.Model):
     like = models.IntegerField(null=True, default=0, blank=True)
     hate = models.IntegerField(null=True, default=0, blank=True)
     commentnumber = models.IntegerField(null=True, default = 0, blank=True)
+    voted = models.ManyToManyField(User,related_name="voted_posts")
 
     def __unicode__(self):
         return self.title

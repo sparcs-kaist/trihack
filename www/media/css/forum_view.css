@@ -39,6 +39,10 @@
     font-size:15px;
     margin-bottom:40px;
 }
+#forum_post_content p
+{
+    word-wrap:break-word;
+}
 #forum_post_content_box
 {
     float:left;

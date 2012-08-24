@@ -43,6 +43,7 @@
 }
 .forum_list_article_mid_preview p
 {
+    word-wrap:break-word;
     color:#858585;
     font-size:15px;
 }
