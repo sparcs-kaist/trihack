@@ -14,7 +14,16 @@ rowsPerPage = 7
 
 def showlist(request):
     pk = request.GET.get('category', 'notice')
-    boardList = Paginator(Post.objects.filter(category__name = pk).order_by('-id'), rowsPerPage)
+    criteria = request.GET.get('criteria', 'new')
+
+    if criteria == 'new':
+        boardList = Paginator(Post.objects.filter(category__name = pk).order_by('-id'), rowsPerPage)
+    else:
+        boardList = Paginator(Post.objects.filter(category__name = pk).extra(
+            select={"score":'like - hate'},
+            order_by = ('-score',)
+            ), rowsPerPage)
+
     page = int(request.GET.get('page', 1))
 
     # paging
@@ -55,7 +64,7 @@ def view_work(request):
 		pk = int(request.POST.get('id', -1))
 		category = request.POST.get('category', '')
 		postData = Post.objects.get(id = pk)
-		
+
 		if 'like' in request.POST:
 			postData.like = postData.like + 1
 		elif 'hate' in request.POST:
