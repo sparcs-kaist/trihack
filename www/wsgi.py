@@ -15,8 +15,10 @@ framework.
 """
 import sys, os
 
+sys.path += [os.path.join(os.path.dirname(__file__), '')]
 sys.path += [os.path.join(os.path.dirname(__file__), '..')]
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "trihack.settings")
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE","settings")
 
 # This application object is used by any WSGI server configured to use this
 # file. This includes Django's development server, if the WSGI_APPLICATION
