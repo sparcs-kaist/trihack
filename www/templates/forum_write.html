@@ -24,7 +24,6 @@
 </script>
 
 <div id="forum_write">
-
 	<div id = "title" style = "text-align:center">
 		<a href = "/"><img src="{{MEDIA_URL}}image/logo.png" alt="main logo"/></a><br/>
 		<img src="{{MEDIA_URL}}image/forum_title.png" alt="forum title"/><br/>
@@ -36,6 +35,8 @@
 
 	<div id = "write_form">
 		<form name=writeform method=post action="/forum/dowrite/">
+			<div id="write_form_category_box">
+			</div>
 			<div id="write_form_category">
 				CATEGORY 
 				<select name=category>
