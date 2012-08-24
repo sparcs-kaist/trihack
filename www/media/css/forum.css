@@ -1,0 +1,38 @@
+@charset "utf-8";
+
+html { overflow: -moz-scrollbars-vertical; overflow-y: scroll; overflow-x: auto;}
+body { font-family:"Century Gothic",Dotum,돋움,Arial,sans-serif; font-size:15px; margin:0; padding:0; line-height:1.3em; color:#494949; }
+
+a img { border:0; }
+
+/* 여백제거 */
+p{ margin:0; }
+h1,h2,h3,h4,h5,h6,form,div,fieldset,input,textarea { margin:0;padding:0; }
+fieldset { border:0; }
+input { font-family:"Century Gothic",Dotum,돋움,Arial,sans-serif; }
+
+hr{
+    height:1px;
+    border:none;
+    background-color:#404040;
+    margin-bottom:5px;
+}
+hr.broken_hr{
+    display:block;
+    height:10px;
+    border:none;
+    background:url(/media/image/hr.png);
+}
+
+.clear{ clear:both; }
+.right{ float:right; }
+.left{ float:left; }
+
+#forum, #forum_content, #forum_write{ margin:32px; }
+.forum_black_box
+{
+    float:left;
+    background-color:#404040;
+    margin:8px 0 0 -50px;
+    width:40px;
+}

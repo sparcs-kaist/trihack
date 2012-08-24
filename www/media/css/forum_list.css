@@ -1,77 +1,33 @@
-#forum
-{
-    margin: 32px;
-}
-#forum hr{
-    display:block;
-    height:10px;
-    border:none;
-    background:url(/media/image/hr.png);
-}
-#forum_top_criteria_button{
-    float: left;
-}
-#forum_contents
-{
-    margin-top:20px;
-}
-
+#forum_contents { margin-top:20px; }
 .forum_list_article
 {
-    font-family:"Century Gothic";
     margin-bottom:10px;
     margin-top:10px;
 }
-.forum_list_article_top
-{
-    color:#979797;
-    font-size:15px;
-}
-
+.forum_list_article_top { color:#979797; }
 .forum_list_article_top span
 {
     font-size:10px;
 }
-
 .forum_list_article_mid_title
 {
     color:#000000;
     font-size:20px;
 }
-.forum_list_article_mid a 
-{
-    text-decoration:none;
-    
-}
+.forum_list_article_mid a { text-decoration:none; }
 .forum_list_article_mid_preview p
 {
     word-wrap:break-word;
     color:#858585;
-    font-size:15px;
 }
-.forum_list_article_bottom
-{
-    float:right;
-    font-size:13px;
-}
-#forum_write_button
-{
-    float:right;
-}
-.graytext
-{
-    color:#c3c3c3;
-}
-#clear
-{
-    clear:both;
-}
+.forum_list_article_bottom { font-size:13px; }
+#forum_list .graytext { color:#c3c3c3; }
+
 .step-links a { color:#666; text-decoration: none; }
 .step-links a:hover { color:#333; text-decoration: underline; }
 .step-links a:visited { color:#666; text-decoration: none; }
 .step-links span.page
 {
-    font-family:"Century Gothic";
     border:1px solid black;
     width:1.5em;
     padding:3px 0;

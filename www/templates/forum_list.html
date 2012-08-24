@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 {% load poll_extras %}
 {% block style %} 
-<link href="/media/css/forum_list.css" rel="stylesheet" />
+<link rel="stylesheet" href="{{MEDIA_URL}}css/forum.css" />
+<link rel="stylesheet" href="{{MEDIA_URL}}css/forum_list.css" />
 {% endblock %}
 {% block content %}
 
@@ -12,14 +13,14 @@
 
 <div id="forum">
 	<div id="forum_top">
-		<div id="forum_top_criteria_button">
+		<div id="forum_top_criteria_button" class="left">
 		    <a href = "/forum?page={{ current_page }}&category={{ category }}&criteria=hot"><img src = "{{MEDIA_URL}}image/forum_hot_box.png" alt="forum hot"/></a>
 			<a href = "/forum?page={{ current_page }}&category={{ category }}&cirteria=new"><img src = "{{MEDIA_URL}}image/forum_new_blackbox.png" alt="forum new"/><br/></a>
 		</div>
-		<div id="forum_write_button">
+		<div class="forum_write_button right">
 			<a href="/forum/write/?category={{ category }}"><img src="{{MEDIA_URL}}image/forum_write.png" alt="write article" /></a>
 		</div>
-		<div id="clear"></div>
+		<div class="clear"></div>
 	</div>
 	<div id="forum_contents">
 		<div id = "forum_list">
@@ -40,14 +41,14 @@
 						</a>
 					</div>
 					<br />
-					<div class="forum_list_article_bottom">
+					<div class="forum_list_article_bottom right">
 						<span class="graytext">UP DOWN  </span>{{ like|subtract:hate }} &nbsp&nbsp  
 						<span class="graytext">COMMENTS  </span>{{ row.comment__count }}
 					</div>	
 				</div>
 				{% if not forloop.last %}
-					<br>
-					<hr>
+				<div class="clear"></div>
+				<hr class="broken_hr" />
 				{% endif %}	
 			{% endfor %}
 		{% else %}
@@ -63,13 +64,13 @@
 		</span>
 	</div>
 
-	<div id="forum_write_button">
+	<div class="forum_write_button right">
 		<a href="/forum/write/?category={{ category }}">
 			<img src="/media/image/forum_write.png" alt="write article" />
 		</a>
 	</div>
 
-	<div id="clear" style="height:10px"></div>
+	<div class="clear"></div>
 </div>
 
 {% endblock %}

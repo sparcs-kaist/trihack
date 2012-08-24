@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block style %} 
+<link rel="stylesheet" href="{{MEDIA_URL}}css/forum.css" />
 <link rel="stylesheet" href="{{MEDIA_URL}}css/forum_write.css" />
 {% endblock %}
 {% block content %}
@@ -35,7 +36,7 @@
 
 	<div id="write_form">
 		<form id="writeform" method="post" action="/forum/write/">
-			<div id="write_form_category_box">
+			<div id="write_form_category_box" class="forum_black_box">
 			</div>
 			<div id="write_form_category">
 				CATEGORY 
@@ -58,13 +59,13 @@
 				TITLE 
 				<input type="text" name="title" size="50" maxlength="50" autofocus="autofocus" value="{{ postData.title }}" /><br/>
 			</div>
-			<div style="clear:both;"></div>
-			<hr id="solidhr" />
+			<div class="clear"></div>
+			<hr />
 			<div id="write_form_contents">
 				<textarea  name="contents" cols="50" rows="10">{{ postData.text }}</textarea><br/>
 			</div>
-			<hr id="borkenhr" />
-			<div id="write_form_writebutton">
+			<hr class="broken_hr" />
+			<div id="write_form_writebutton" class="right">
 				<input type="image" src="{{MEDIA_URL}}image/button_write.png" onclick="javascript:writeCheck();" />
 			</div>
 			<div id="write_form_hidden" style="display:none">
@@ -73,7 +74,7 @@
 				{% endif %}
 				<input type="hidden" name="id" value="{{ postData.id }}" />
 			</div>
-			<div style="clear:both;"></div>
+			<div class="clear"></div>
 		</form>
 	</div>
 </div>
