@@ -1,0 +1,55 @@
+#borkenhr
+{
+    height:10px;
+    border:none;
+    background-image:url(/media/image/hr.png);
+}
+#forum_write
+{
+    margin-left:32px;
+    margin-right:32px;
+}
+#write_form
+{
+    margin-top:10px;
+}
+#solidhr
+{
+    height:1px;
+    border:none;
+    background-color:#404040;
+    margin-bottom:5px;
+}
+#write_form_title
+{
+    margin-top:10px;
+    font-family:"Country Gothic";
+    color:#9d9d9d;
+}
+#write_form_title input
+{
+    border:none;
+    margin-left: 10px;
+    width:910px;
+}
+#write_form_category 
+{
+    margin-right:100px;
+    color:#9d9d9d;
+}
+#write_form_contents
+{
+    margin-top:20px;
+}
+#write_form_contents textarea
+{
+    width:965px;
+    min-height:300px;
+    height:auto;
+    border:1px solid;
+    border-color:#404040;
+}
+#write_form_writebutton
+{
+    float:right;
+}

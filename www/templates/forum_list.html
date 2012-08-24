@@ -14,8 +14,8 @@
 	<img src = "{{MEDIA_URL}}image/forum_new_blackbox.png" alt="forum new"/><br/>
 	<div id="forum_contents">
 		<div id = "forum_list">
-		{% if boardList %}
-			{% for row in boardList %}
+		{% if articlelist %}
+			{% for row,shorttext in articlelist %}
 				<div class="forum_list_article">
 					<div class="forum_list_article_top">
 						{{ row.user }} <span class="graytext">({{ row.modified_on|date:"Y-m-d H: i" }})</span>
@@ -23,10 +23,10 @@
 					<div class="forum_list_article_mid">
 						<a href="/forum/read?id={{ row.id }}&category={{ category }}" title="{{ row.title }}">					
 							<div class="forum_list_article_mid_title">
-								{{ row.title}}
+								{{ row.title }}
 							</div>
 							<div class="forum_list_article_mid_preview">
-									<p>Test Preview</p>
+								<p>{{shorttext}}</p>
 							</div>
 						</a>
 					</div>

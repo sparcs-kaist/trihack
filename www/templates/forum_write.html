@@ -1,5 +1,7 @@
 {% extends "base.html" %}
-
+{% block style %} 
+<link rel="stylesheet" href="{{MEDIA_URL}}css/forum_write.css" />
+{% endblock %}
 {% block content %}
 <script language="javascript">
 	function writeCheck() {
@@ -21,38 +23,55 @@
 	}
 </script>
 
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<div id="forum_write">
 
-<div id = "title" style = "text-align:center">
-	<a href = "/"><img src="{{MEDIA_URL}}image/logo.png" alt="main logo"/></a><br/>
-	<img src="{{MEDIA_URL}}image/forum_title.png" alt="forum title"/><br/>
-</div>
+	<div id = "title" style = "text-align:center">
+		<a href = "/"><img src="{{MEDIA_URL}}image/logo.png" alt="main logo"/></a><br/>
+		<img src="{{MEDIA_URL}}image/forum_title.png" alt="forum title"/><br/>
+	</div>
 
-<div id = "write_form">
-	<form name=writeform method=post action="/forum/dowrite/">
-		TITLE <input type=text name=title size=50 maxlength=50><br/>
-		<br/>
-		
-		<textarea name=contents cols=50 rows=10></textarea><br/>
-		<br/>
+	<div id="buttons">
+		<input type=image src="{{MEDIA_URL}}image/button_back.png" alt="back" onClick="history.back()"/>
+	</div>
 
-		CATEGORY 
-		<select name=category>
-			{% if category == 'notice' %}
-				<option value="notice" selected=True>Notice</option>
-			{% else %}
-				<option value="notice">Notice</option>
-			{% endif %}
-	
-			{% if category == 'free' %}
-				<option value="free" selected=True>Free Board</option>
-			{% else %}
-				<option value="free">Free Board</option>
-			{% endif %}
-		<br/>
+	<div id = "write_form">
+		<form name=writeform method=post action="/forum/dowrite/">
+			<div id="write_form_category">
+				CATEGORY 
+				<select name=category>
+					{% if category == 'notice' %}
+						<option value="notice" selected=True>Notice</option>
+					{% else %}
+						<option value="notice">Notice</option>
+					{% endif %}
+			
+					{% if category == 'free' %}
+						<option value="free" selected=True>Free Board</option>
+					{% else %}
+						<option value="free">Free Board</option>
+					{% endif %}
+				</select>
+			</div>
 
-		<input type=button value="등록" OnClick="javascript:writeCheck();">
-	</form>
+			<div id="write_form_title">
+				TITLE 
+				<input type=text name=title size=50 maxlength=50 autofocus="autofocus"><br/>
+			</div>
+			<div style="clear:both;"></div>
+			<hr id="solidhr">
+			<div id="write_form_contents">
+				<textarea  name=contents cols=50 rows=10></textarea><br/>
+			</div>
+			<br/>
+
+			<hr id="borkenhr">
+			<div id="write_form_writebutton">
+
+				<input type=image src="{{MEDIA_URL}}image/button_write.png" OnClick="javascript:writeCheck();">
+			</div>
+			<div style="clear:both;"></div>
+		</form>
+	</div>
 </div>
 
 {% endblock %}

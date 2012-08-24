@@ -3,7 +3,7 @@ from django.shortcuts import render_to_response, render
 from django.utils import timezone
 from forum.models import *
 from django.views.decorators.csrf import csrf_exempt
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect,HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -32,8 +32,22 @@ def showlist(request):
 
     totalCnt = Post.objects.filter(category__name = pk).count()
     current_page = page
+    
+    texts=[]
+    for row in boardList.page(page) :
+        texts.append(row.text)
 
-    return render(request, 'forum_list.html', {'boardList':boardList.page(page), 'contacts':contacts, 'title':title, 'totalCnt':totalCnt, 'current_page':current_page, 'category':pk, 'user':request.user})
+    shorttexts= []
+    shorttexts=map(lambda x: x[:200]+"..." if len(x)>200 else x,texts)
+    articlelist = zip(boardList.page(page),shorttexts)
+    return render(request, 'forum_list.html', {
+        'articlelist':articlelist,
+        'contacts':contacts, 
+        'title':title, 
+        'totalCnt':totalCnt, 
+        'current_page':current_page, 
+        'category':pk, 
+        'user':request.user})
 
 @csrf_exempt
 def view_work(request):
@@ -60,7 +74,7 @@ def view_work(request):
 #        Post.objects.filter(id = pk).update(hits=postData.hits + 1)
         return render(request, 'forum_view.html', {'postData':postData, 'user':request.user, 'category':category, 'path':request.get_full_path()})
 
-
+@login_required
 def write_work(request):
     pk = request.GET.get('category', '')
     return render(request, 'forum_write.html', {'category':pk, 'user':request.user})
