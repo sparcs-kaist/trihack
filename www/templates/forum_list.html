@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-{% load poll_extras %}
 {% block style %} 
 <link rel="stylesheet" href="{{MEDIA_URL}}css/forum.css" />
 <link rel="stylesheet" href="{{MEDIA_URL}}css/forum_list.css" />
@@ -25,7 +24,7 @@
 	<div id="forum_contents">
 		<div id = "forum_list">
 		{% if articlelist %}
-			{% for row,shorttext,like,hate in articlelist %}
+			{% for row,shorttext in articlelist %}
 				<div class="forum_list_article">
 					<div class="forum_list_article_top">
 						{{ row.user }} <span class="graytext">({{ row.modified_on|date:"Y-m-d H: i" }})</span>
@@ -42,7 +41,7 @@
 					</div>
 					<br />
 					<div class="forum_list_article_bottom right">
-						<span class="graytext">UP DOWN  </span>{{ like|subtract:hate }} &nbsp&nbsp  
+						<span class="graytext">UP DOWN  </span>{{ row.score }} &nbsp;&nbsp;
 						<span class="graytext">COMMENTS  </span>{{ row.comment__count }}
 					</div>	
 				</div>

@@ -42,19 +42,12 @@ def showlist(request):
     totalCnt = Post.objects.filter(category__name = pk).count()
     current_page = page
     
-    texts=[]
+    texts = []
     for row in boardList.page(page) :
         texts.append(row.text)
 
-    shorttexts= []
-    likes = [] 
-    hates = []
-    for i in boardList.page(page) :
-        likes.append(i.getLike())
-        hates.append(i.getHate())
-   
-    shorttexts=map(lambda x: x[:200]+"..." if len(x)>200 else x,texts)
-    articlelist = zip(boardList.page(page),shorttexts,likes,hates)
+    shorttexts = map(lambda x: x[:200]+"..." if len(x)>200 else x,texts)
+    articlelist = zip(boardList.page(page),shorttexts)
     return render(request, 'forum_list.html', {
         'articlelist':articlelist,
         'contacts':contacts, 
@@ -76,8 +69,7 @@ def view(request):
     except ObjectDoesNotExist:
         return HttpResponseBadRequest('Invalid Post Number')
 
-    return render(request, 'forum_view.html', {'postData':postData, 'category':category, 'path':request.get_full_path(),'like':postData.getLike(),'hate':postData.getHate()})
-
+    return render(request, 'forum_view.html', {'postData':postData, 'category':category, 'path':request.get_full_path()})
 @login_required
 def vote(request):
     if request.method == 'POST': 

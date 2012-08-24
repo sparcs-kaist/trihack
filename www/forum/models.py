@@ -22,12 +22,16 @@ class Post(models.Model):
 
     def __unicode__(self):
         return self.title
-    
-    def getLike(self) :
+
+    @property
+    def like(self):
         return Vote.objects.filter(user=self.user,post=self,like=True).count()
-    
-    def getHate(self) :
+    @property
+    def hate(self):
         return Vote.objects.filter(user=self.user,post=self,like=False).count()
+    @property
+    def score(self):
+        return self.like-self.hate
 
 class Comment(models.Model):
     user = models.ForeignKey(User, null=False)
