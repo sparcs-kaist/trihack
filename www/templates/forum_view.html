@@ -71,6 +71,7 @@
 			<div class="forum_comment">
 				<div class="forum_comment_info">
 				{{ comment.user }} ({{ comment.created_on|date:"Y-m-d H:i" }})
+				{% if comment.user == user %} <a href="/forum/delete_comment/?comment={{ comment.id }}">X</a> {% endif %}
 				</div>
 				<div class="forum_comment_content">
 				{{ comment.text }}
@@ -92,7 +93,7 @@
 				<input type=image src="{{MEDIA_URL}}image/button_write.png" OnClick="javascript:writeCheck();">
 			</div>
 			<div style="clear:both;"></div>
-			
+				
 		</form>
 	</div>
 </div>

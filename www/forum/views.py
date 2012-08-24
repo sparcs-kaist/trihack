@@ -170,7 +170,7 @@ def write_comment(request):
 @login_required
 def delete_comment(request):
     user = request.user
-    comment_id = int(request.POST.get('comment', -1))
+    comment_id = int(request.GET.get('comment', -1))
     comment = Comment.objects.get(id=comment_id)
     url = '/forum/read/?id=%d' % comment.post.id
 
