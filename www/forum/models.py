@@ -24,3 +24,9 @@ class Post(models.Model):
 
     def __unicode__(self):
         return self.title
+
+class Comment(models.Model):
+    user = models.ForeignKey(User, null=False)
+    post = models.ForeignKey(Post, null=False)
+    text = models.TextField(u"내용")
+    created_on = models.DateTimeField(auto_now_add=True)

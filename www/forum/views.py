@@ -155,3 +155,26 @@ def delete_work(request):
 
     url = '/forum?category=' + category
     return HttpResponseRedirect(url)
+
+@login_required
+def write_comment(request):
+    user = request.user
+    post_id = int(request.POST.get('post', -1))
+    text = request.POST.get('text','')
+    post = Post.objects.get(pk=post_id)
+    new_comment = Comment(user=request.user, post=post, text=text, created_on=timezone_now()) 
+
+    return HttpResponseRedirect(url)
+
+@login_required
+def delete_comment(request):
+    user = request.user
+    comment_id = int(request.POST.get('comment', -1))
+
+    comment = Comment.objects.get(id=comment_id)
+    if request.user != comment.user:
+        return HttpResponseBadRequest()
+
+    comment.delete()
+
+    return HttpResponseRedirect(url)
