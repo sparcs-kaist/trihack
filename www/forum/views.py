@@ -62,7 +62,6 @@ def showlist(request):
         'totalCnt':totalCnt, 
         'current_page':current_page, 
         'category':pk, 
-        'user':request.user,
         'boardlist':boardList,
         'criteria':criteria,
         })
@@ -77,7 +76,7 @@ def view(request):
     except ObjectDoesNotExist:
         return HttpResponseBadRequest('Invalid Post Number')
 
-    return render(request, 'forum_view.html', {'postData':postData, 'user':request.user, 'category':category, 'path':request.get_full_path(),'like':postData.getLike(),'hate':postData.getHate()})
+    return render(request, 'forum_view.html', {'postData':postData, 'category':category, 'path':request.get_full_path(),'like':postData.getLike(),'hate':postData.getHate()})
 
 @login_required
 def vote(request):
@@ -108,7 +107,7 @@ def vote(request):
 def write(request):
     if request.method == 'GET':
         pk = request.GET.get('category', '')
-        return render(request, 'forum_write.html', {'category':pk, 'user':request.user})
+        return render(request, 'forum_write.html', {'category':pk})
     else:
         if 'modify' in request.POST:
             return modify(request)
@@ -144,7 +143,7 @@ def modify(request):
 
         if postData.user != request.user:
             return HttpResponseBadRequest()
-        return render(request, 'forum_write.html', {'postData':postData, 'user':request.user, 'category':category})
+        return render(request, 'forum_write.html', {'postData':postData, 'category':category})
 
     else:
         pk = int(request.POST.get('id', -1))
@@ -214,7 +213,6 @@ def write_comment(request):
 
 @login_required
 def delete_comment(request):
-    user = request.user
     comment_id = int(request.GET.get('comment', -1))
 
     try:
