@@ -14,7 +14,7 @@ class Post(models.Model):
     title = models.CharField(u"제목", max_length=100)
     user = models.ForeignKey(User, null=False,related_name="posted_user")
     created_on = models.DateTimeField(auto_now_add=True)
-    modified_on = models.DateTimeField(auto_now=True)
+    modified_on = models.DateTimeField(auto_now_add=True)
     text = models.TextField(u"내용")
     category = models.ForeignKey(Category, null=False, verbose_name=u"게시판")
     hits = models.IntegerField(null=True, default=0, blank=True)
