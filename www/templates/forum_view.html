@@ -51,7 +51,7 @@
 		<div id="forum_post_content_box" class="forum_black_box">
 		</div>	
 		<div id="forum_post_content">
-			<p>{{ postData.text }}</p>
+			<p>{{ postData.text|linebreaksbr }}</p>
 		</div>
 		<div id = "forum_post_buttons">
 			<form action = "/forum/vote/?id={{postData.id}}&category={{category}}" method="post"> 
@@ -76,7 +76,6 @@
 				<textarea name="text" cols="50" rows="5"></textarea>
 			</div>
 			<div id="write_form_writebutton" class="right">
-
 				<input type="image" src="{{MEDIA_URL}}image/button_write.png" onclick="javascript:writeCheck();" />
 			</div>
 			<div class="clear"></div>
@@ -88,14 +87,13 @@
 				{% if comment.user == user %} <a href="/forum/delete_comment/?comment={{ comment.id }}">X</a> {% endif %}
 				</div>
 				<div class="forum_comment_content">
-				{{ comment.text }}
+				{{ comment.text|linebreaksbr }}
 				</div>
 			</div>
 			{% if not forloop.last %}
 			<hr />
 			{% endif %}
 		{% endfor %}
-
 	</div>
 </div>
 {% endblock %}
