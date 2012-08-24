@@ -63,3 +63,19 @@
 {
     clear:both;
 }
+.step-links a { color:#666; text-decoration: none; }
+.step-links a:hover { color:#333; text-decoration: underline; }
+.step-links a:visited { color:#666; text-decoration: none; }
+.step-links span.page
+{
+    font-family:"Century Gothic";
+    border:1px solid black;
+    width:1.5em;
+    padding:3px 0;
+    display:inline-block;
+    text-align:center;
+}
+.step-links span.current_page {
+    color:#fff;
+    background-color:#000;
+}

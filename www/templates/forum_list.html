@@ -49,9 +49,9 @@
 	</div>
 	<div id="forum_pagination">
         <span class="step-links">
-            {% for page in boardlist.page_range %}
-                <a href="/forum?page={{ page }}&category={{ category }}&criteria={{ criteria }}">{{ page }}</a>
-            {% endfor %}
+			{% for page in boardlist.page_range %}
+			<a href="/forum?page={{ page }}&category={{ category }}&criteria={{ criteria }}"><span class="page {% if current_page == page %}current_page{% endif %}">{{ page }}</span></a>
+			{% endfor %}
 		</span>
 	</div>
 
