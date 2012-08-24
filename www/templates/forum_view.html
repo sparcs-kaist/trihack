@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block style %}
-<link rel="stylesheet" href="/media/css/forum_view.css">
+<link rel="stylesheet" href="/media/css/forum_view.css" />
 {% endblock %}
 {% block content %}
-<script language="javascript">
+<script type="text/javascript">
 	function boardlist(){
 		location.href = '/forum?category={{ category }}'
 	}
@@ -24,7 +24,7 @@
 
 <div id="forum_content">
 	<div id = "top_buttons">
-        <a style="cursor:Pointer;" onclick="history.back()" alt="back"><img src="{{MEDIA_URL}}image/button_back.png"></a>
+		<a style="cursor:Pointer;" onclick="history.back()"><img src="{{MEDIA_URL}}image/button_back.png" alt="back" /></a>
 		{% if postData.user == user or user.is_superuser %}
 			<a href="/forum/delete?id={{ postData.id }}&category={{category}}" alt="delete" class="rightbutton">
 				<img src="{{MEDIA_URL}}image/button_delete.png">
@@ -98,25 +98,3 @@
 	</div>
 </div>
 {% endblock %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
