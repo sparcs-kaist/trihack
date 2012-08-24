@@ -56,12 +56,12 @@
 
 			<div id="write_form_title">
 				TITLE 
-				<input type=text name=title size=50 maxlength=50 autofocus="autofocus"><br/>
+				<input type=text name=title size=50 maxlength=50 autofocus="autofocus" value="{{ postData.title }}"><br/>
 			</div>
 			<div style="clear:both;"></div>
 			<hr id="solidhr">
 			<div id="write_form_contents">
-				<textarea  name=contents cols=50 rows=10></textarea><br/>
+				<textarea  name=contents cols=50 rows=10>{{ postData.text }}</textarea><br/>
 			</div>
 			<br/>
 
@@ -69,6 +69,12 @@
 			<div id="write_form_writebutton">
 
 				<input type=image src="{{MEDIA_URL}}image/button_write.png" OnClick="javascript:writeCheck();">
+			</div>
+			<div id="write_form_hidden" style="display:none">
+				{% if postData %}
+				<input type="hidden" name="modify" value="1" />
+				{% endif %}
+				<input type="hidden" name="id" value="{{ postData.id }}" />
 			</div>
 			<div style="clear:both;"></div>
 		</form>

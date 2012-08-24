@@ -110,6 +110,9 @@ def write(request):
         pk = request.GET.get('category', '')
         return render(request, 'forum_write.html', {'category':pk, 'user':request.user})
     else:
+        if 'modify' in request.POST:
+            return modify(request)
+
         category = request.POST.get('category', '')
         try:
             dr = Category.objects.get(name=category)
@@ -141,7 +144,7 @@ def modify(request):
 
         if postData.user != request.user:
             return HttpResponseBadRequest()
-        return render(request, 'forum_modify.html', {'postData':postData, 'user':request.user, 'category':category})
+        return render(request, 'forum_write.html', {'postData':postData, 'user':request.user, 'category':category})
 
     else:
         pk = int(request.POST.get('id', -1))
