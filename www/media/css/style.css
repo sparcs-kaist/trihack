@@ -72,17 +72,23 @@ img {
     float: right;
     width: 53px;
     height: 23px;
+    margin-right: 16px;
     background: url(/media/image/about.png) no-repeat top left;
 }
 #menu_forum a {
     float: right;
     width: 56px;
     height: 23px;
-    margin-left: 16px;
     margin-right: 32px;
     background: url(/media/image/forum.png) no-repeat top left;
 }
-
+#menu_who a {
+    float: right;
+    width: 38px;
+    height: 23px;
+    margin-right: 16px;
+    background: url(/media/image/who.png) no-repeat top left; 
+}
 /* navigation end */
 #content {
     background: url(/media/image/background.png) no-repeat;

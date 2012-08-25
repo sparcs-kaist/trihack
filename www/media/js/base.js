@@ -4,6 +4,7 @@ var MainNav = {
 		this.menu_register = $("#menu_register a");
 		this.menu_login = $("#menu_login a");
 		this.menu_logout = $("#menu_logout a");
+		this.menu_who = $("#menu_who a");
 		this.menu_about = $("#menu_about a");
 		this.menu_forum = $("#menu_forum a");
 
@@ -48,6 +49,15 @@ var MainNav = {
 			});			
 		}
 
+		if (this.loc != "who") {
+			this.menu_who.bind('mouseenter', function() {
+				$("#menu_who a").css('background', 'url(/media/image/who_active.png) no-repeat top left');
+			});
+			this.menu_who.bind('mouseleave', function() {
+				$("#menu_who a").css('background', 'url(/media/image/who.png) no-repeat top left');
+			});
+		}
+
 		this.menu_logout.bind('mouseenter', function() {
 			$("#menu_logout a").css('background', 'url(/media/image/logout_active.png) no-repeat top left');
 		});
@@ -72,6 +82,10 @@ var MainNav = {
 		else if(location.href.indexOf("/login/") != -1){
 			this.loc = "login";
 			this.menu_login.css('background','url(/media/image/login_active.png) no-repeat top left');
+		}
+		else if(location.href.indexOf("/whoweare/") != -1) {
+			this.loc = "who";
+			this.menu_who.css('background','url(/media/image/who_active.png) no-repeat top left');
 		}
 	}
 }
