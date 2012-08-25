@@ -1,6 +1,9 @@
 body {
     font-family: 'NanumGothic';
 }
+tr {
+    height: 120px;
+}
 #title {
     margin-bottom: 45px;
 }
@@ -28,7 +31,7 @@ body {
     width: 100px;
 }
 .content_description {
-    width: 480px;
+    width: 380px;
 }
 .content_content {
     display: inline;
@@ -41,12 +44,10 @@ body {
     font-weight: bold;
     font-style: italic;
 }
-tr {
-    height: 120px;
-}
 .description {
     height: 50px;
     font-size: 80%;
+    padding-right: 5px;
 }
 .homepage a {
     height: 10px;
