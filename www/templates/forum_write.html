@@ -4,25 +4,6 @@
 <link rel="stylesheet" href="{{MEDIA_URL}}css/forum_write.css" />
 {% endblock %}
 {% block content %}
-<script type="text/javascript">
-	function writeCheck() {
-		var form = document.writeform;
-
-		if(!form.title.value)
-		{
-			alert("제목을 적으세요");
-			form.name.focus();
-			return;
-		}
-		if(!form.contents.value)
-		{
-			alert("내용을 적으세요");
-			form.contents.focus();
-			return;
-		}
-		form.submit();
-	}
-</script>
 
 <div id="forum_write">
 	<div id="title" style="text-align:center">
@@ -66,7 +47,7 @@
 			</div>
 			<hr class="broken_hr" />
 			<div id="write_form_writebutton" class="right">
-				<input type="image" src="{{MEDIA_URL}}image/button_write.png" onclick="javascript:writeCheck();" />
+				<input type="image" src="{{MEDIA_URL}}image/button_write.png" />
 			</div>
 			<div id="write_form_hidden" style="display:none">
 				{% if postData %}

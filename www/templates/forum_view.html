@@ -2,21 +2,14 @@
 {% block style %}
 <link rel="stylesheet" href="{{MEDIA_URL}}css/forum.css" />
 <link rel="stylesheet" href="{{MEDIA_URL}}css/forum_view.css" />
+<script type="text/javascript" src="{{MEDIA_URL}}js/forum.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		CommentList.initialize();			
+	});
+</script>
 {% endblock %}
 {% block content %}
-<script type="text/javascript">
-	function boardlist(){
-		location.href = '/forum?category={{ category }}'
-	}
-	
-	function boardmodify(){
-		location.href = '/forum/modify?id={{ postData.id }}&category={{ category }}'
-	}
-	
-	function boarddelete(){
-		location.href = '/forum/delete?id={{ postData.id }}&category={{ category }}'
-	}
-</script>
 
 <div id="title" style="text-align:center">
 	<a href = "/"><img src="{{MEDIA_URL}}image/logo.png" alt="main logo"/></a><br/>
@@ -76,7 +69,7 @@
 				<textarea name="text" cols="50" rows="5"></textarea>
 			</div>
 			<div id="write_form_writebutton" class="right">
-				<input type="image" src="{{MEDIA_URL}}image/button_write.png" onclick="javascript:writeCheck();" />
+				<input type="image" src="{{MEDIA_URL}}image/button_write.png" />
 			</div>
 			<div class="clear"></div>
 		</form>
@@ -84,7 +77,7 @@
 			<div class="forum_comment">
 				<div class="forum_comment_info">
 				{{ comment.user }} ({{ comment.created_on|date:"Y-m-d H:i" }})
-				{% if comment.user == user %} <a href="/forum/delete_comment/?comment={{ comment.id }}">X</a> {% endif %}
+				{% if comment.user == user %} <span id = "{{comment.id}}" class="comment_delete">X</span> {% endif %}
 				</div>
 				<div class="forum_comment_content">
 				{{ comment.text|linebreaksbr }}

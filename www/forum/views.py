@@ -199,7 +199,12 @@ def write_comment(request):
 
         return HttpResponseRedirect(url)
     else:
-        return HttpResponseRedirect('/')
+        return HttpResponse(json.dumps({
+                'user': comment.user,
+                'created_on': comment.created_on,
+                'comment_id': comment.id,
+                'comment_text': comment.text
+            }))
 
 @login_required
 def delete_comment(request):
@@ -217,4 +222,6 @@ def delete_comment(request):
 
     comment.delete()
     
-    return HttpResponseRedirect(url)
+    return HttpResponse(json.dumps({
+            'state': 'success'
+        }))
