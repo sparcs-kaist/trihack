@@ -1,0 +1,2 @@
+msgid "스탠퍼드 대학교 및 실리콘 밸리행 티켓 (2월 중 일주일 간 방문)"
+msgstr "Three flight tickets to Stanford/Silicon Valley 第一名团队3位成员赴美国硅谷机票"
