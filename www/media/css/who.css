@@ -1,0 +1,59 @@
+body {
+    font-family: 'NanumGothic';
+}
+#title {
+    margin-bottom: 45px;
+}
+.content_title {
+    display: inline;
+    padding-top: 4px;
+    padding-left: 32px;
+    padding-right: 17px;
+    padding-bottom: 7px;
+    margin-right: 10px;
+    background-color: #404040;
+    color: #FFFFFF;
+}
+.logo {
+    width: 100px;
+    height: 100px;
+    margin-right: 5px;
+}
+.content_wrapper table {
+    margin-top: 22px;
+    margin-left: 32px;
+    margin-bottom: 47px;
+}
+.content_logo {
+    width: 100px;
+}
+.content_description {
+    width: 480px;
+}
+.content_content {
+    display: inline;
+    height: 100px;
+}
+.title {
+    height: 24px;
+    font-family:"Century Gothic";
+    letter-spacing: 2px;
+    font-weight: bold;
+    font-style: italic;
+}
+tr {
+    height: 120px;
+}
+.description {
+    height: 50px;
+    font-size: 80%;
+}
+.homepage a {
+    height: 10px;
+    color: #D0D0D0;
+    font-size: 80%;
+    text-decoration: none;
+}
+.homepage a:hover {
+    text-decoration: underline;
+}

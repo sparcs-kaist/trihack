@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block style %}
+<link rel="stylesheet" href="{{MEDIA_URL}}css/who.css" media="screen" />
+<script type="text/javascript" src="{{MEDIA_URL}}js/who.js"></script>
+<script type="text/javascript">
+	FontFace.initialize();
+</script>
+{% endblock %}
+
+{% block content %}
+<div id="title" style="text-align:center">
+    <a href = "/"><img src="{{MEDIA_URL}}image/logo.png" alt="register title"/></a><br/>
+    <img src="{{MEDIA_URL}}image/whoweare_title.png" alt="about title" /><br/>
+
+    <div id="title_lang">
+        <img src="{{MEDIA_URL}}image/about_english_gray.png" alt="english" />
+        <img src="{{MEDIA_URL}}image/about_korean_black.png" alt="korean" />
+        <img src="{{MEDIA_URL}}image/about_japanese_gray.png" alt="japanese" />
+        <img src="{{MEDIA_URL}}image/about_chinese_gray.png" alt="chinese" />
+    </div>
+</div>
+
+<div id="content">
+	<div class="content_wrapper">
+		<div class="content_title">ORGANIZERs</div>
+		<table>
+			<tr>
+				<td class="content_logo">
+					<img src = "{{MEDIA_URL}}image/ases_logo.png" alt="ases" class="logo" />
+				</td>
+				<td class="content_description">
+					<p class = "title">ASES</p>
+					<p class = "description">{% trans "Standford Univ의 아시아 태평양지역 대학생 기업가 정신 단체로 아시아 지역의 기업가 정신 고취를 위해 노력하고 있습니다." %}</p>
+					<p class = "homepage"><a href="http://ases.standford.edu">http://ases.standford.edu</a></p>
+				</td>
+				<td class="content_logo">
+					<img src = "{{MEDIA_URL}}image/bizjapan_logo.png" alt="bizjapan" class="logo" />
+				</td>
+				<td class="content_description">
+					<p class = "title">Biz JAPAN</p>
+					<p class = "description">{% trans "동경 대학교 기업가 정신 대학생 단체" %}</p>
+					<p class = "homepage"><a href="http://bizjapan2012.blogspot.jp">http://bizjapan2012.blogspot.jp</a></p>
+				</td>
+			</tr>
+			<tr>
+				<td class="content_logo">
+					<img src = "{{MEDIA_URL}}image/startwave_logo.png" alt="startwave" class="logo" />
+				</td>
+				<td class="content_description">
+					<p class = "title">START WAVE</p>
+					<p class = "description">{% trans "STARTWAVE는 창업에 관심과 열정이 있는 대학생들이 모여서 같이 아이디어를 공유하고 창업을 시작할 수 있는 공동 창업자들을 만날 수 있는 창입니다." %}</p>
+					<p class = "homepage"><a href="http://facebook.com/startwave">http://facebook.com/startwave</a></p>
+				</td>
+				<td class="content_logo">
+					<img src = "{{MEDIA_URL}}image/sparcs_logo.png" alt="sparcs" class="logo" />
+				</td>
+				<td class="content_description">
+					<p class = "title">SPARCS</p>
+					<p class = "description">{% trans "KAIST의 IT서비스 개발동아리로서, KAIST 학우들과 사회에 공헌할 수 있는 여러 서비스를 개발하고 있습니다." %}</p>
+					<p class = "homepage"><a href="http://sparcs.org">http://sparcs.org</a></p>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	<div class="content_wrapper">
+		<div class="content_title">MAIN SPONSOR</div>
+		<table>
+			<tr>
+				<td class="content_logo">
+					<img src="{{MEDIA_URL}}image/nexon_logo.png" alt="nexon" class="logo" />
+				</td>
+				<td class="content_description">
+					<p class = "title">NEXON</p>
+					<p class = "description">{% trans "넥슨은 게임을 기반으로 한 다양한 엔터테인먼트 사업을 통해 전세계에 최고의 재미와 특별한 경험을 선사하는 글로벌 기업입니다." %}</p>
+					<p class = "homepage"><a href="http://www.nexon.com">http://www.nexon.com</a></p>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	<div class="content_wrapper">
+		<div class="content_title">SPONSORs</div>
+		<table>
+			<tr>
+				<td class="content_logo">
+					<img src="{{MEDIA_URL}}image/viki_logo.png" alt="viki" class="logo" />
+				</td>
+				<td class="content_description">
+					<p class = "title">Viki</p>
+					<p class = "description">{% trans "Viki is a global TV site, where millions of people watch their favorite shows, movies, music videos, and more -- translated into 150+ languages by a community of avid fans." %}</p>
+					<p class = "homepage"><a href="http://www.viki.com">http://www.viki.com</a></p>
+				</td>
+				<td class="content_logo">
+					<img src="{{MEDIA_URL}}image/wepass_logo.png" alt="wepass" class="logo" />
+				</td>
+				<td class="content_description">
+					<p class = "title">WEPASS</p>
+					<p class = "description">{% trans "위패스는 뷰티, 패션, 컬쳐, 외식, 쇼핑 등 다양한 라이프 스타일 브랜드의 마일리지를 하나의 앱으로 적립할 수 있는 모바일 마일리지 카드 입니다." %}</p>
+					<p class = "homepage"><a href="http://www.9flava.com">http://www.9flava.com</a></p>
+				</td>
+			</tr>
+		</table>
+	</div> 
+
+	<div class="content_wrapper">
+		<div class="content_title">MENTORs</div>
+		<table>
+			<tr>
+				<td class="content_logo">
+					<img src="{{MEDIA_URL}}image/vcnc_logo.png" alt="vcnc" class="logo" />
+				</td>
+				<td class="content_description">
+					<p class = "title">VCNC</p>
+					<p class = "description">{% trans "VCNC는 새로운 가치를 만드는 회사로 현재 Between 어플을 통해 성장하고 있습니다." %}</p>
+					<p class = "homepage"><a href="http://www.vcnc.co.kr">http://www.vcnc.co.kr</a></p>
+				</td>
+				<td class="content_logo">
+					<img src="{{MEDIA_URL}}image/onoffmix_logo.png" alt="onoffmix" class="logo" />
+				</td>
+				<td class="content_description">
+					<p class = "title">ONOFFMIX</p>
+					<p class = "description">{% trans "온오프믹스는 온, 오프라인 행사 및 이벤트 관리 서비스입니다." %}</p>
+					<p class = "homepage"><a href="http://onoffmix.com">http://onoffmix.com</a></p>
+				</td>
+			</tr>
+		</table>
+    </div>
+</div>
+{% endblock %}
