@@ -11,65 +11,65 @@
 </div>
 
 <div id="forum">
-	<div id="forum_top">
-		<div id="forum_top_criteria_button" class="left">
-		    <a href = "/forum?page={{ current_page }}&category={{ category }}&criteria=hot"><img src = "{{MEDIA_URL}}image/forum_hot_{% if criteria == 'hot' %}black{% endif %}box.png" alt="forum hot"/></a>
-		    <a href = "/forum?page={{ current_page }}&category={{ category }}&criteria=new"><img src = "{{MEDIA_URL}}image/forum_new_{% if criteria == 'new' %}black{% endif %}box.png" alt="forum new"/><br/></a>
-		</div>
-		<div class="forum_write_button right">
-			<a href="/forum/write/?category={{ category }}"><img src="{{MEDIA_URL}}image/forum_write.png" alt="write article" /></a>
-		</div>
-		<div class="clear"></div>
-	</div>
-	<div id="forum_contents">
-		<div id = "forum_list">
-		{% if articlelist %}
-			{% for row,shorttext in articlelist %}
-				<div class="forum_list_article">
-					<div class="forum_list_article_top">
-						{{ row.user }} <span class="graytext">({{ row.modified_on|date:"Y-m-d H: i" }})</span>
-					</div>
-					<div class="forum_list_article_mid">
-						<a href="/forum/read?id={{ row.id }}&category={{ category }}" title="{{ row.title }}">					
-							<span class="forum_list_article_mid_title">
-								{{ row.title }}
-							</span>
-							<span class="forum_list_article_mid_preview">
-								<p>{{shorttext}}</p>
-							</span>
-						</a>
-					</div>
-					<br />
-					<div class="forum_list_article_bottom right">
-						<span class="graytext">UP DOWN  </span>{{ row.score }} &nbsp;&nbsp;
-						<span class="graytext">COMMENTS  </span>{{ row.comment__count }}
-					</div>	
-				</div>
-				{% if not forloop.last %}
-				<div class="clear"></div>
-				<hr class="broken_hr" />
-				{% endif %}	
-			{% endfor %}
-		{% else %}
-			<p>No Data.</p>
-		{% endif %}
-		</div>
-	</div>
-	<div id="forum_pagination">
+    <div id="forum_top">
+        <div id="forum_top_criteria_button" class="left">
+            <a href = "/forum?page={{ current_page }}&category={{ category }}&criteria=hot"><img src = "{{MEDIA_URL}}image/forum_hot_{% if criteria == 'hot' %}black{% endif %}box.png" alt="forum hot"/></a>
+            <a href = "/forum?page={{ current_page }}&category={{ category }}&criteria=new"><img src = "{{MEDIA_URL}}image/forum_new_{% if criteria == 'new' %}black{% endif %}box.png" alt="forum new"/><br/></a>
+        </div>
+        <div class="forum_write_button right">
+            <a href="/forum/write/?category={{ category }}"><img src="{{MEDIA_URL}}image/forum_write.png" alt="write article" /></a>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div id="forum_contents">
+        <div id = "forum_list">
+        {% if articlelist %}
+            {% for row,shorttext in articlelist %}
+                <div class="forum_list_article">
+                    <div class="forum_list_article_top">
+                        {{ row.user }} <span class="graytext">({{ row.modified_on|date:"Y-m-d H: i" }})</span>
+                    </div>
+                    <div class="forum_list_article_mid">
+                        <a href="/forum/read?id={{ row.id }}&category={{ category }}" title="{{ row.title }}">                    
+                            <span class="forum_list_article_mid_title">
+                                {{ row.title }}
+                            </span>
+                            <span class="forum_list_article_mid_preview">
+                                <p>{{shorttext}}</p>
+                            </span>
+                        </a>
+                    </div>
+                    <br />
+                    <div class="forum_list_article_bottom right">
+                        <span class="graytext">UP DOWN  </span>{{ row.score }} &nbsp;&nbsp;
+                        <span class="graytext">COMMENTS  </span>{{ row.comment__count }}
+                    </div>    
+                </div>
+                {% if not forloop.last %}
+                <div class="clear"></div>
+                <hr class="broken_hr" />
+                {% endif %}    
+            {% endfor %}
+        {% else %}
+            <p>No Data.</p>
+        {% endif %}
+        </div>
+    </div>
+    <div id="forum_pagination">
         <span class="step-links">
-			{% for page in boardlist.page_range %}
-			<a href="/forum?page={{ page }}&category={{ category }}&criteria={{ criteria }}"><span class="page {% if current_page == page %}current_page{% endif %}">{{ page }}</span></a>
-			{% endfor %}
-		</span>
-	</div>
+            {% for page in boardlist.page_range %}
+            <a href="/forum?page={{ page }}&category={{ category }}&criteria={{ criteria }}"><span class="page {% if current_page == page %}current_page{% endif %}">{{ page }}</span></a>
+            {% endfor %}
+        </span>
+    </div>
 
-	<div class="forum_write_button right">
-		<a href="/forum/write/?category={{ category }}">
-			<img src="/media/image/forum_write.png" alt="write article" />
-		</a>
-	</div>
+    <div class="forum_write_button right">
+        <a href="/forum/write/?category={{ category }}">
+            <img src="/media/image/forum_write.png" alt="write article" />
+        </a>
+    </div>
 
-	<div class="clear"></div>
+    <div class="clear"></div>
 </div>
 
 {% endblock %}
