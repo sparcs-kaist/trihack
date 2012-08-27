@@ -4,89 +4,89 @@
 <link rel="stylesheet" href="{{MEDIA_URL}}css/forum_view.css" />
 <script type="text/javascript" src="{{MEDIA_URL}}js/forum.js"></script>
 <script type="text/javascript">
-	$(document).ready(function() {
-		CommentList.initialize();			
-	});
+    $(document).ready(function() {
+        CommentList.initialize();            
+    });
 </script>
 {% endblock %}
 {% block content %}
 
 <div id="title" style="text-align:center">
-	<a href = "/"><img src="{{MEDIA_URL}}image/logo.png" alt="main logo"/></a><br/>
-	<img src="{{MEDIA_URL}}image/forum_title.png" alt="forum title"/><br/>
+    <a href = "/"><img src="{{MEDIA_URL}}image/logo.png" alt="main logo"/></a><br/>
+    <img src="{{MEDIA_URL}}image/forum_title.png" alt="forum title"/><br/>
 </div>
 
 <div id="forum_content">
-	<div id="top_buttons">
-		<a style="cursor:Pointer;" onclick="history.back()"><img src="{{MEDIA_URL}}image/button_back.png" alt="back" /></a>
-		{% if postData.user == user or user.is_superuser %}
-			<a href="/forum/delete?id={{ postData.id }}&category={{ category }}" alt="delete" class="right">
-				<img src="{{MEDIA_URL}}image/button_delete.png">
-			</a>
-			<a href="/forum/modify?id={{ postData.id }}&category={{ category }}" alt="modify" class="right">
-				<img src="{{MEDIA_URL}}image/button_modify.png">
-			</a>	
-		
-		{% endif %}
-		<br/>
-	</div>
+    <div id="top_buttons">
+        <a style="cursor:Pointer;" onclick="history.back()"><img src="{{MEDIA_URL}}image/button_back.png" alt="back" /></a>
+        {% if postData.user == user or user.is_superuser %}
+            <a href="/forum/delete?id={{ postData.id }}&category={{ category }}" alt="delete" class="right">
+                <img src="{{MEDIA_URL}}image/button_delete.png">
+            </a>
+            <a href="/forum/modify?id={{ postData.id }}&category={{ category }}" alt="modify" class="right">
+                <img src="{{MEDIA_URL}}image/button_modify.png">
+            </a>    
+        
+        {% endif %}
+        <br/>
+    </div>
 
-	<div id="forum_post">
-		<div id="forum_post_title_box" class="forum_black_box">
-		</div>
-		<div id="forum_post_title">
-			<p>{{ postData.title }}</p>
-		</div>
-		<div id="forum_post_info">
-			{{ postData.user }} ({{ postData.modified_on|date:"Y-m-d H:i" }})
-		</div>
+    <div id="forum_post">
+        <div id="forum_post_title_box" class="forum_black_box">
+        </div>
+        <div id="forum_post_title">
+            <p>{{ postData.title }}</p>
+        </div>
+        <div id="forum_post_info">
+            {{ postData.user }} ({{ postData.modified_on|date:"Y-m-d H:i" }})
+        </div>
 
-		<div id="forum_post_content_box" class="forum_black_box">
-		</div>	
-		<div id="forum_post_content">
-			<p>{{ postData.text|linebreaksbr }}</p>
-		</div>
-		<div id = "forum_post_buttons">
-			<form action = "/forum/vote/?id={{postData.id}}&category={{category}}" method="post"> 
-				{% csrf_token %}
-				<fieldset style="border:0; padding:0">
-					<input type="hidden" name="id" size="0" value="{{ postData.id }}" />
-					<input type="hidden" name="category" size="0" value="{{ category }}" />
-					<input type="submit" name="like" value="UP" class="graytext" />
-					<input type="submit" name="hate" value="DOWN" class="graytext" /> {% if postData.like %}+{{ postData.like }}{% endif %}  {% if postData.hate %}-{{ postData.hate }}{% endif %}&nbsp;&nbsp;
-				<span class="graytext">COMMENT</span> + {{ postData.comment__count }}
-				</fieldset>
-			</form>
-		</div>
-	</div>
-	<hr class="broken_hr" />
-	<div id="forum_comments">
-		<div id="forum_comments_head">COMMENTs</div>
-		<form action = "/forum/write_comment/" method="post">
-			{% csrf_token %}
-			<div style="display:none"><input type="hidden" name="post" value="{{ postData.id }}" /></div>
-			<div id="write_comment">
-				<textarea name="text" cols="50" rows="5"></textarea>
-			</div>
-			<div id="write_form_writebutton" class="right">
-				<input type="image" src="{{MEDIA_URL}}image/button_write.png" />
-			</div>
-			<div class="clear"></div>
-		</form>
-		{% for comment in postData.comment_set.all %}
-			<div class="forum_comment">
-				<div class="forum_comment_info">
-				{{ comment.user }} ({{ comment.created_on|date:"Y-m-d H:i" }})
-				{% if comment.user == user %} <span id = "{{comment.id}}" class="comment_delete">X</span> {% endif %}
-				</div>
-				<div class="forum_comment_content">
-				{{ comment.text|linebreaksbr }}
-				</div>
-			</div>
-			{% if not forloop.last %}
-			<hr />
-			{% endif %}
-		{% endfor %}
-	</div>
+        <div id="forum_post_content_box" class="forum_black_box">
+        </div>    
+        <div id="forum_post_content">
+            <p>{{ postData.text|linebreaksbr }}</p>
+        </div>
+        <div id = "forum_post_buttons">
+            <form action = "/forum/vote/?id={{postData.id}}&category={{category}}" method="post"> 
+                {% csrf_token %}
+                <fieldset style="border:0; padding:0">
+                    <input type="hidden" name="id" size="0" value="{{ postData.id }}" />
+                    <input type="hidden" name="category" size="0" value="{{ category }}" />
+                    <input type="submit" name="like" value="UP" class="graytext" />
+                    <input type="submit" name="hate" value="DOWN" class="graytext" /> {% if postData.like %}+{{ postData.like }}{% endif %}  {% if postData.hate %}-{{ postData.hate }}{% endif %}&nbsp;&nbsp;
+                <span class="graytext">COMMENT</span> + {{ postData.comment__count }}
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <hr class="broken_hr" />
+    <div id="forum_comments">
+        <div id="forum_comments_head">COMMENTs</div>
+        <form action = "/forum/write_comment/" method="post">
+            {% csrf_token %}
+            <div style="display:none"><input type="hidden" name="post" value="{{ postData.id }}" /></div>
+            <div id="write_comment">
+                <textarea name="text" cols="50" rows="5"></textarea>
+            </div>
+            <div id="write_form_writebutton" class="right">
+                <input type="image" src="{{MEDIA_URL}}image/button_write.png" />
+            </div>
+            <div class="clear"></div>
+        </form>
+        {% for comment in postData.comment_set.all %}
+            <div class="forum_comment">
+                <div class="forum_comment_info">
+                {{ comment.user }} ({{ comment.created_on|date:"Y-m-d H:i" }})
+                {% if comment.user == user %} <span id = "{{comment.id}}" class="comment_delete">X</span> {% endif %}
+                </div>
+                <div class="forum_comment_content">
+                {{ comment.text|linebreaksbr }}
+                </div>
+            </div>
+            {% if not forloop.last %}
+            <hr />
+            {% endif %}
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}
