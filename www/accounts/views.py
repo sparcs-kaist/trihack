@@ -6,7 +6,9 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.http import *
 from django.views.decorators.csrf import csrf_exempt
+from django.utils.encoding import smart_str, smart_unicode
 import re
+import codecs
 
 @csrf_exempt
 def login_page(request) :
@@ -52,14 +54,14 @@ def register(request):
     country_check = [0 for i in country_list]
     
     if request.POST:
-        team = request.POST.get('team')
-        email = request.POST.get('email')
-        contact = request.POST.get('contact')
-        expertise = request.POST.getlist('expertise')
+        team = request.POST.get('team','')
+        email = request.POST.get('email','')
+        contact = request.POST.get('contact','')
+        expertise = request.POST.getlist('expertise','')
 
-        members_name1 = request.POST.get('members_name1')
-        members_name2 = request.POST.get('members_name2')
-        members_name3 = request.POST.get('members_name3')
+        members_name1 = request.POST.get('members_name1','')
+        members_name2 = request.POST.get('members_name2','')
+        members_name3 = request.POST.get('members_name3','')
 
         members_university1 = request.POST.get('members_university1')
         members_university2 = request.POST.get('members_university2')
@@ -101,7 +103,7 @@ def register(request):
             error = True
         
         if not error :
-            f = open("../result.txt","a+")
+            f = codecs.open("../result.txt","a+","utf-8")
             f.write(' / '.join([team,email,contact,str(expertise_list),members_name1,members_name2,members_name3,members_university1,members_university2,members_university3,country])+"\n")
             f.close()
             return render(request,'register_success.html',{})
