@@ -104,7 +104,7 @@ def register(request):
         
         if not error :
             filepath = os.path.join(os.path.dirname(__file__), '../result.txt')
-            f = codecs.open(filepath,"utf-8")
+            f = codecs.open(filepath,"a+","utf-8")
             f.write(' / '.join([team,email,contact,str(expertise_list),members_name1,members_name2,members_name3,members_university1,members_university2,members_university3,country])+"\n")
             f.close()
             return render(request,'register_success.html',{})
