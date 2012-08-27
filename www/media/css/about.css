@@ -34,7 +34,14 @@ br {
 #content_3{
     height:270px;
 }
-#content_4{
+#content_4 {
+    height:80px; 
+}
+#content_4 div {
+    display: inline;
+    float: left;
+}
+#content_5{
     height:110px;
     margin-top:88px;
 }
