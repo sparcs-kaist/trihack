@@ -141,3 +141,24 @@ def validateEmail(email):
 def changelanguage(request, lang):
     request.session['django_language'] = lang
     return HttpResponseRedirect('/about/')
+
+@login_required
+def result_view(request):
+    if request.user.is_superuser:
+        filepath = os.path.join(os.path.dirname(__file__), '../result.txt')
+        f = codecs.open(filepath, 'r', 'utf-8')
+        content = f.read()
+        contents = content.split('\n')
+        f.close()
+        
+        num_lines = 0
+        result = ''
+        for line in contents:
+            num_lines += 1
+            result += line
+            result += '<br/>'
+
+        result = result + 'Team numbers: ' + str(num_lines-1)
+        return HttpResponse(result)
+    else:
+        return HttpResponseBadRequest()

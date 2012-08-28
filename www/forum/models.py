@@ -46,4 +46,6 @@ class Vote(models.Model):
     class Meta:
         unique_together = (("user","post"))
 
-
+class File(models.Model):
+    name = models.TextField(u"파일 이름")
+    post = models.ForeignKey(Post)
