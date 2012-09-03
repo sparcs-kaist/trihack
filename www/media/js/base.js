@@ -58,12 +58,14 @@ var MainNav = {
 			});
 		}
 
-		this.menu_mypage.bind('mouseenter', function() {
-			$("#menu_mypage a").css('background', 'url(/media/image/mypage_active.png) no-repeat top left');
-		});
-		this.menu_mypage.bind('mouseleave', function() {
-			$("#menu_mypage a").css('background', 'url(/media/image/mypage.png) no-repeat top left');
-		});			
+        if (this.loc != "mypage") {
+    		this.menu_mypage.bind('mouseenter', function() {
+	    		$("#menu_mypage a").css('background', 'url(/media/image/mypage_active.png) no-repeat top left');
+		    });
+     		this.menu_mypage.bind('mouseleave', function() {
+	    		$("#menu_mypage a").css('background', 'url(/media/image/mypage.png) no-repeat top left');
+	    	});			
+        }
 	},
 	setNavImages:function()
 	{
@@ -87,5 +89,9 @@ var MainNav = {
 			this.loc = "who";
 			this.menu_who.css('background','url(/media/image/who_active.png) no-repeat top left');
 		}
+        else if(location.href.indexOf("/mypage/") != -1) {
+            this.loc = "mypage";
+            this.menu_mypage.css('background','url(/media/image/mypage_active.png) no-repeat top left');
+        }
 	}
 }
