@@ -25,12 +25,21 @@
     border-right-width: 0;
     border-bottom-width: 1px;
 }
-#signinSubmit {
-    width: 98px;
+#changePWSubmit {
+    display: inline;
+    width: 106px;
     height: 24px;
     margin-top: 18px;
-    margin-left: 443px;
-    background: url(/media/image/login_button.png) no-repeat top left;
+    background: url(/media/image/changepw_button.png) no-repeat top left;
+    border: 0;
+}
+#logoutSubmit {
+    display: inline;
+    width: 106px;
+    height: 24px;
+    margin-top: 18px;
+    margin-left: 323px;
+    background: url(/media/image/logout_button.png) no-repeat top left;
     border: 0;
 }
 #state {
