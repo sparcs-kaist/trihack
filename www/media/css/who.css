@@ -7,6 +7,13 @@ tr {
 #title {
     margin-bottom: 45px;
 }
+#title_lang{
+    margin-top: 12px;
+}
+#title_lang img {
+    margin-left:9px;
+    margin-right:9px;
+}
 .content_title {
     display: inline;
     padding-top: 4px;

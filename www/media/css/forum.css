@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 html { overflow: -moz-scrollbars-vertical; overflow-y: scroll; overflow-x: auto;}
-body { font-family:"Century Gothic",Dotum,돋움,Arial,sans-serif; font-size:15px; margin:0; padding:0; line-height:1.3em; color:#494949; }
+body { font-family:"Century Gothic",Dotum,돋움,Arial,sans-serif; font-size:15px; line-height:1.3em; color:#494949; }
 
 a img { border:0; }
 
