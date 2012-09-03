@@ -3,7 +3,7 @@ var MainNav = {
 	{
 		this.menu_register = $("#menu_register a");
 		this.menu_login = $("#menu_login a");
-		this.menu_logout = $("#menu_logout a");
+		this.menu_mypage = $("#menu_mypage a");
 		this.menu_who = $("#menu_who a");
 		this.menu_about = $("#menu_about a");
 		this.menu_forum = $("#menu_forum a");
@@ -58,11 +58,11 @@ var MainNav = {
 			});
 		}
 
-		this.menu_logout.bind('mouseenter', function() {
-			$("#menu_logout a").css('background', 'url(/media/image/logout_active.png) no-repeat top left');
+		this.menu_mypage.bind('mouseenter', function() {
+			$("#menu_mypage a").css('background', 'url(/media/image/mypage_active.png) no-repeat top left');
 		});
-		this.menu_logout.bind('mouseleave', function() {
-			$("#menu_logout a").css('background', 'url(/media/image/logout.png) no-repeat top left');
+		this.menu_mypage.bind('mouseleave', function() {
+			$("#menu_mypage a").css('background', 'url(/media/image/mypage.png) no-repeat top left');
 		});			
 	},
 	setNavImages:function()

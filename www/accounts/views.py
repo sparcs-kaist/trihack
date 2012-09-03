@@ -37,9 +37,36 @@ def login_page(request) :
 
     return render(request, 'login.html', {'username': username,'state': state,'next':redirection})
   
+@login_required
 def logout(request):
     auth.logout(request)
     return HttpResponseRedirect('/')
+
+@login_required
+def mypage(request):
+    user = request.user
+    state = ''
+
+    if request.POST:
+        if request.POST.get('logout', None) != None:
+            auth.logout(request)
+            return HttpResponseRedirect('/')
+        if request.POST.get('changepw', None) != None:
+            currentpw = request.POST.get('currentpw', '')
+            newpw = request.POST.get('newpw', '')
+            newpwconfirm = request.POST.get('newpwconfirm', '')
+
+            if user.check_password(currentpw):
+                if newpw != newpwconfirm:
+                    state='New Password != New Password Confirm'
+                else:
+                    user.set_password(newpw)
+                    user.save()
+                    state='Successfully Changed'
+            else:
+                state='Wrong Current Password'
+
+    return render(request, 'mypage.html', {'state': state})
 
 def register(request):
     teamE = emailE = contactE = members_name1E = members_name2E = members_name3E = members_university1E = members_university2E = members_university3E = countryE = ''
