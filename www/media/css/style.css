@@ -67,12 +67,12 @@ img {
     margin-left: 16px;
     background: url(/media/image/login.png) no-repeat top left;
 }
-#menu_logout a {
+#menu_mypage a {
     float: left;
     width: 67px;
     height: 23px;
     margin-left: 16px;
-    background: url(/media/image/logout.png) no-repeat top left;
+    background: url(/media/image/mypage.png) no-repeat top left;
 }
 #menu_about a {
     float: right;

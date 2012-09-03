@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block style %}
+<link rel = "stylesheet" href="{{MEDIA_URL}}css/mypage.css" />
+
+{% endblock %}
+{% block content %}
+<div id="title" style="text-align:center">
+	<a href = "/"><img src="{{MEDIA_URL}}image/logo.png" alt="register title"/></a><br/>
+	<img src="{{MEDIA_URL}}image/login_title.png" alt="login title"/><br/>
+</div>
+<div id="login">
+	<div id="loginbox">
+		<form id="loginform" method="post" action=".">{% csrf_token %}
+			<div id="idPw">
+				<table id="passwordchangetable">
+					<tr>
+						<td><label>Current Password</label></td>	
+						<td><input type="password" class="signInInput" id="trihackCP" name="currentpw" tabindex="1"/></td>
+					</tr>
+					<tr>
+						<td><label>New Password</label></td>
+						<td><input type="password" class="signInInput" id="trihackPW" name="newpw" tabindex="2"/></td>
+					</tr>
+					<tr>
+						<td><label>New Password Confirm</label></td>
+						<td><input type="password" class="signInInput" id="trihackPWC" name="newpwconfirm" tabindex="3"/></td>
+					</tr>
+				</table>
+				<input type="hidden" name="next" value="{{ next }}" />
+				<input type="submit" class="signInButton" id="logoutSubmit" value="" name="logout" />
+				<input type="submit" class="signInButton" id="changePWSubmit" value="" name="changepw"/>
+			</div>
+		</form>
+		<p id="state">{{state}}</p>
+	</div>
+</div>
+
+{% endblock %}
